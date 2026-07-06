@@ -5,9 +5,11 @@ paywalled. This playbook was built 2026-07-06 from public sources only. The rese
 environment blocked full-page fetches (proxy 403s on every direct fetch), so *all*
 citations below were verified via search-index snippets and page titles — verbatim where
 the snippet reproduced Oren's own words (tweets, captions, newsletter excerpts), weaker
-where the search layer summarized. Each entry carries a confidence level. A fresh
-reviewer has traced every `[DOCUMENTED]` claim; anything it couldn't trace was
-downgraded. **The user's own bootcamp notes are gospel and override everything here.**
+where the search layer summarized. Each entry carries a confidence level. A fresh,
+independent reviewer traced all 25 `[DOCUMENTED]` claims (2026-07-06): 16 confirmed
+(9 with verbatim text reproduced at the exact cited IDs), 6 partial, 2 untraceable,
+1 miscitation — all downgrades and fixes are applied below. **The user's own bootcamp
+notes are gospel and override everything here.**
 
 **Tags:**
 - `[DOCUMENTED]` — Oren (or Cut30's own material) actually said it; source cited.
@@ -15,6 +17,8 @@ downgraded. **The user's own bootcamp notes are gospel and override everything h
   his own page/post), *secondhand* (a third party reporting what he said/does).
 - `[MY READ]` — my extension or synthesis. Not Oren's words. Never present these to the
   user as Cut30 doctrine.
+- `[UNVERIFIED LEAD]` — attributed to Oren somewhere, but the independent reviewer could
+  not trace it to a citable source. Treat as a lead to re-verify, never as doctrine.
 
 ---
 
@@ -31,8 +35,9 @@ downgraded. **The user's own bootcamp notes are gospel and override everything h
   https://isthiscourselegit.com/course/30-day-short-form-video-bootcamp
 - `[DOCUMENTED — verbatim]` Week 1: "the basics of recording and editing… copy-work to
   write winning scripts, learn about the importance of hooks… recording, formats, gear."
-  Week 2: "developing your idea pipeline and content sources and getting ahead." —
-  https://course.cut30.co/sales-page. Weeks 3–4 curriculum: not publicly confirmed.
+  — https://course.cut30.co/sales-page. Week 2 (paraphrase, reviewer could not reproduce
+  the quote): developing an idea pipeline and content sources. Weeks 3–4 curriculum: not
+  publicly confirmed.
 - `[DOCUMENTED — verbatim]` Oren on program design: "It's a four week program and three
   of the weeks we bring in a creator to help share different perspectives on content
   creation and content strategy." — https://x.com/orenmeetsworld/status/1807599740538007871
@@ -110,18 +115,23 @@ downgraded. **The user's own bootcamp notes are gospel and override everything h
 
 ## 4. Visuals, first frame, editing
 
-- `[DOCUMENTED — verbatim]` **Visible effort in visuals builds trust.** "Not
-  overproduction. Not perfection. Effort. Animations that guide attention. Thoughtful
-  transitions. Format switching that creates rhythm. Graphics that feel designed, not
-  generated." — "The State of Content 2026," https://www.hyperstudios.us/p/the-state-of-content-2026
-- `[DOCUMENTED — paraphrase]` **Set/staging is a virality lever** — a "completely normal"
-  podcast becomes shareable through visual staging (therapist's-couch set, overhead
-  camera, wide shots). — https://www.tiktok.com/@orenmeetsworld/video/7560738567203327263
-- `[DOCUMENTED — secondhand]` Face in thumbnails/covers for fast trust; bold colors,
-  clean fonts, sharp keyword headlines. — startupspells.com (analysis of his visible
-  practice, not his words)
+- `[DOCUMENTED — paraphrase, quote unverified]` **Visible effort in visuals builds
+  trust** — not overproduction or perfection, but visible effort: animations that guide
+  attention, thoughtful transitions, format switching for rhythm, graphics that feel
+  designed rather than generated. The reviewer could not reproduce this as a verbatim
+  quote (the article's other quotes reproduced; this one didn't) — treat the theme as
+  his, the exact wording as unconfirmed. — "The State of Content 2026,"
+  https://www.hyperstudios.us/p/the-state-of-content-2026
+- `[DOCUMENTED — paraphrase, URL unverified]` **Set/staging is a virality lever** — great
+  interviews plus "a great set built for social media" make ordinary formats stand out
+  (reviewer confirmed the claim's substance; the specific cited TikTok ID and the
+  therapist's-couch details did not reproduce).
+- `[DOCUMENTED — secondhand]` Bold colors, clean fonts, sharp keyword headlines on
+  covers (the face-in-thumbnail-for-trust detail is unverified). — startupspells.com
+  (analysis of his visible practice, not his words)
 - `[DOCUMENTED — paraphrase]` **"Yap" formats** — low-lift talking formats carried by a
-  visual device: notebook yaps, object yaps, car yaps, walking yaps, graphic yaps. —
+  visual device: standard yaps, notebook yaps, car yaps, walking yaps, graphic yaps
+  (roughly one visual every ~2 seconds). —
   "How to yap…", https://www.hyperstudios.us/p/how-to-yap-advanced-influence-and
 - `[DOCUMENTED — paraphrase]` **Brands-as-TV:** structure content like a show — people
   are characters, locations are sets, announcements/holidays are plot; episodes and arcs
@@ -130,21 +140,27 @@ downgraded. **The user's own bootcamp notes are gospel and override everything h
 ## 5. Performance analysis & iteration
 
 - `[DOCUMENTED — paraphrase]` **Content pillars system:** run 3–5 pillars at a time,
-  5–10 pieces per pillar per month, evaluate monthly; when a pillar falls off, *elevate*
-  it before killing it. — "How to Use Content Pillars,"
+  multiple pieces per pillar per month, evaluate monthly; when a pillar falls off,
+  *elevate* it before killing it. — "How to Use Content Pillars,"
   https://www.hyperstudios.us/p/how-to-use-content-pillars
-- `[DOCUMENTED — secondhand, weak]` He tracks posts, saves, shares, views, and
-  month-over-month change in a spreadsheet, weighting "social intent" metrics
-  (saves/shares); data as "ammunition to be in charge of strategy." Primary source
-  unpinned — treat as a lead, not doctrine.
-- `[DOCUMENTED — secondhand, weak]` "No one in the network has gotten meaningful results
-  without being on camera for some of their content." — attributed via the Blueprint
-  podcast episode cluster; primary source unverified.
-- `[DOCUMENTED — paraphrase]` **Organic before paid:** "start with organic… build that
-  muscle. And then… performance marketing is meant to amplify what you're already doing."
-  — Cyber Patterns interview, https://www.cyberpatterns.xyz/p/oren
-- `[DOCUMENTED — secondhand]` Good organic hooks get harvested for paid ads; test hooks,
-  angles, personas systematically. — Open Residency podcast (summary only)
+- `[UNVERIFIED LEAD]` He tracks posts, saves, shares, views, and month-over-month change
+  in a spreadsheet, weighting "social intent" metrics (saves/shares). Reviewer could not
+  trace this anywhere — do not cite as his method.
+- `[UNVERIFIED LEAD]` "No one in the network has gotten meaningful results without being
+  on camera for some of their content." The Blueprint episode exists
+  (open.spotify.com/episode/1BeaOituGHFFqaj0FYLPEX) but the quote never reproduced —
+  do not cite as his.
+- `[DOCUMENTED — paraphrase]` **Organic before paid:** "if you're a new brand starting
+  out, you should start with organic and get into content creation to build that muscle"
+  … performance marketing "is really meant to be an amplification feature." — Darkroom
+  Agency interview,
+  https://www.darkroomagency.com/observatory/building-the-creator-business-with-oren-john
+  (reviewer corrected the citation: originally misattributed to Cyber Patterns)
+- `[DOCUMENTED — secondhand, weak]` Good organic hooks get harvested for paid ads; test
+  hooks, angles, personas systematically. — Open Residency podcast
+  (open.spotify.com/episode/0w6V1lpD0jbbUee7NX1GbO); episode is real and on-topic but the
+  specific claim did not reproduce in its description — thin, re-verify before leaning
+  on it.
 - `[MY READ]` Autopsy method for this coach (Oren publishes *what* he tracks, not a
   retention-graph procedure): read the numbers against the user's own baseline, find the
   earliest big divergence (hook-rate/first-seconds drop vs. mid-video drop vs.
