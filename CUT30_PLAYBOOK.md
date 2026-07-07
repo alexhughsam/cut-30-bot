@@ -8,8 +8,11 @@ the snippet reproduced Oren's own words (tweets, captions, newsletter excerpts),
 where the search layer summarized. Each entry carries a confidence level. A fresh,
 independent reviewer traced all 25 `[DOCUMENTED]` claims (2026-07-06): 16 confirmed
 (9 with verbatim text reproduced at the exact cited IDs), 6 partial, 2 untraceable,
-1 miscitation — all downgrades and fixes are applied below. **The user's own bootcamp
-notes are gospel and override everything here.**
+1 miscitation — all downgrades and fixes are applied below. Re-verification sweep
+2026-07-07: both former `[UNVERIFIED LEAD]` items traced to Hyper newsletter sources and
+upgraded (see §5); weeks 3–4 curriculum added (§0). Remaining thin spot: the Open
+Residency organic-hooks-for-ads claim (§5). **The user's own bootcamp notes are gospel
+and override everything here.**
 
 **Tags:**
 - `[DOCUMENTED]` — Oren (or Cut30's own material) actually said it; source cited.
@@ -36,8 +39,13 @@ notes are gospel and override everything here.**
 - `[DOCUMENTED — verbatim]` Week 1: "the basics of recording and editing… copy-work to
   write winning scripts, learn about the importance of hooks… recording, formats, gear."
   — https://course.cut30.co/sales-page. Week 2 (paraphrase, reviewer could not reproduce
-  the quote): developing an idea pipeline and content sources. Weeks 3–4 curriculum: not
-  publicly confirmed.
+  the quote): developing an idea pipeline and content sources. Week 3 (paraphrase, traced
+  2026-07-07): everyone tries a new content style and post type while refining the
+  content plan; ends with a 7-day posting challenge (~3 videos, tactical assignments) "to
+  get you locked in as a creator." Week 4 (paraphrase): plan ahead, dial in content-
+  planning workflows, build series ideas, strategize continual improvement while still
+  posting. — course.cut30.co/sales-page, cut30.co/home-page-2024,
+  course.cut30.co/7-day-challenge (search-summary of sales copy, medium-high confidence).
 - `[DOCUMENTED — verbatim]` Oren on program design: "It's a four week program and three
   of the weeks we bring in a creator to help share different perspectives on content
   creation and content strategy." — https://x.com/orenmeetsworld/status/1807599740538007871
@@ -143,13 +151,20 @@ notes are gospel and override everything here.**
   multiple pieces per pillar per month, evaluate monthly; when a pillar falls off,
   *elevate* it before killing it. — "How to Use Content Pillars,"
   https://www.hyperstudios.us/p/how-to-use-content-pillars
-- `[UNVERIFIED LEAD]` He tracks posts, saves, shares, views, and month-over-month change
-  in a spreadsheet, weighting "social intent" metrics (saves/shares). Reviewer could not
-  trace this anywhere — do not cite as his method.
-- `[UNVERIFIED LEAD]` "No one in the network has gotten meaningful results without being
-  on camera for some of their content." The Blueprint episode exists
-  (open.spotify.com/episode/1BeaOituGHFFqaj0FYLPEX) but the quote never reproduced —
-  do not cite as his.
+- `[DOCUMENTED — paraphrase]` **Monthly metrics review in a spreadsheet:** per content
+  pillar he tracks posts, total saves, shares, follows, views, and % views change
+  month-over-month, analyzed monthly in Excel; monthly cadence because "you need to do
+  something at least 4x to see if it works." — "How to Use Content Pillars,"
+  https://www.hyperstudios.us/p/how-to-use-content-pillars (re-traced 2026-07-07;
+  upgraded from unverified lead. The "social intent" weighting label remains unverified
+  wording — don't quote that phrase as his.)
+- `[DOCUMENTED — paraphrase]` **On camera is no longer optional:** "In the last 3–4
+  months, we haven't seen a single person in our network get meaningful results without
+  being on camera for some of their content" — context: "it used to be optional, but now
+  you're just noise if you're not featuring yourself on camera." — "The State of Content
+  2026," https://www.hyperstudios.us/p/the-state-of-content-2026 (re-traced 2026-07-07;
+  the earlier Blueprint-podcast attribution was wrong — the newsletter is the source.
+  Close paraphrase, not verbatim.)
 - `[DOCUMENTED — paraphrase]` **Organic before paid:** "if you're a new brand starting
   out, you should start with organic and get into content creation to build that muscle"
   … performance marketing "is really meant to be an amplification feature." — Darkroom

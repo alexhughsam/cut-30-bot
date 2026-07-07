@@ -46,10 +46,15 @@ next autopsy)
   Discipline beat (retention leak), tweet missing "Riftbound" (zero discoverability),
   clip-dunk on ungated ping. v6 = v5 + P5's prescribed fixes, unreviewed by a 6th pass
   (cap) — user calls it.
-- SHIP GATES: (1) confirm ruling that ability-moves fire "When I move" (rules FB group /
-  riftjudge.com) — favorable evidence: "Recalls are not moves" + legend says "move";
-  two-ping fallback ready if not. (2) 24–48h window from July 6 reveal. (3) film
-  finger-point on tablet. (4) post tweet as QT of/reply to official Akali reveal.
+- SHIP GATES: (1) RULING CONFIRMED YES 2026-07-07 by rules inference — Riftbound
+  defines Standard Moves AND Effect-Based Moves as Moves; recalls carry an explicit
+  "(This isn't a move.)" carve-out; riftjudge.com: move triggers fire like any triggered
+  ability, and ability-moves are real moves (Ride the Wind ruling). No card-specific
+  FAQ on the Akali pair exists yet (too new), so an optional 2-minute sanity post to the
+  Rulings & FAQs FB group is cheap insurance — but the 3-ping main version is cleared to
+  film. Fallback stays on file in case of surprise errata. (2) 24–48h window from July 6
+  reveal. (3) film finger-point on tablet. (4) post tweet as QT of/reply to official
+  Akali reveal.
 - Numbers vs baseline: — (not posted)
 - Reusable pattern: contrarian day-of-spoiler formula — claim in 4 words burned on frame
   one + finger on the receipt line + ending hook that makes frame one the answer.

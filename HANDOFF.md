@@ -25,7 +25,10 @@ All state lives in this repo, branch `claude/execute-prompt-md-hcp75d`, all push
 | `PROMPT.md` | The contract. Never edit without the creator asking. |
 | `CUT30_PLAYBOOK.md` | BUILT + independently verified (25 claims traced: 16 confirmed, 6 partial, 2 → `[UNVERIFIED LEAD]`, 1 citation corrected). Tag legend inside. |
 | `PROFILE.md` | FILLED. Niche: Riftbound TCG (+ mental-game and AI spice layers). X-first short-form, on camera, no baseline yet. **Contains the standing coaching-style directive — read it every session, it is not optional.** |
-| `SWIPE_FILE.md` | ACTIVE. Video #1 logged: final script v6, full 5-pass review trail, lesson bank, ship gates, two-ping fallback. |
+| `SWIPE_FILE.md` | ACTIVE. Video #1 logged: final script v6, full 5-pass review trail, lesson bank, ship gates, REVIEWED two-ping fallback. |
+| `templates/SCRIPT_REVIEWER_PROMPT.md` | Fill-in prompt for the script review loop (the exact recipe that shipped video #1). |
+| `templates/BLIND_AUTOPSY_PROMPT.md` | Fill-in prompt for the blind autopsy reviewer. |
+| `templates/AUTOPSY_INTAKE.md` | Checklist to send the creator when a video is posted. |
 | `HANDOFF.md` | This file. |
 
 **Session-start ritual (from PROMPT.md, mandatory):** read `CUT30_PLAYBOOK.md`,
@@ -35,15 +38,16 @@ creator, never silently rebuild from memory.
 ## 3. What is NOT done — your work queue, in order
 
 ### 3.1 Video #1 is scripted but NOT shipped (time-critical)
-Final script v6 + tweet copy + storyboard are in `SWIPE_FILE.md`. Two gates before filming:
-1. **Ruling gate:** the 3-ping loop assumes a unit moved by the legend's action triggers
-   the champion's "When I move." Favorable evidence (rules say "Recalls are not moves";
-   the legend deliberately says "move… to base"; community sources say ability-moves fire
-   move-triggers) but NO explicit official FAQ line found. Creator must confirm via the
-   Riftbound Rulings & FAQs Facebook group or riftjudge.com. If it fails: use the
-   two-ping fallback in the swipe file (fallback is UNREVIEWED — run it through one
-   review pass before shipping).
-2. **Ship window:** the hook ("Everyone's *already* building Akali wrong" + feed
+Final script v6 + tweet copy + storyboard are in `SWIPE_FILE.md`. Gate status:
+1. **Ruling gate: RESOLVED (2026-07-07, confirmed YES by rules inference).** Effect-based
+   moves are Moves (official terminology distinguishes Standard vs Effect-Based Moves;
+   recalls carry an explicit "(This isn't a move.)" carve-out; riftjudge.com confirms
+   move-triggers fire like any triggered ability, and the Ride the Wind ruling treats
+   ability-moves as real moves). No card-specific FAQ on the Akali pair exists yet, so an
+   optional sanity post to the Rulings & FAQs FB group is cheap insurance, not a blocker.
+   The two-ping fallback in the swipe file is now REVIEWED and ship-ready if errata ever
+   surprises us.
+2. **Ship window (the live gate):** the hook ("Everyone's *already* building Akali wrong" + feed
    saturation of the reveal image) decays ~24–48h from the July 6 reveal. **If you are
    reading this after ~July 8, the window is gone** — do not ship as-is. Per the pass-1
    reviewer: swap the claim to a concrete receipt (screenshot a real popular Akali list
@@ -59,11 +63,12 @@ ever), so read against platform norms + the video's own retention shape, and say
 diagnosis-confidence is limited by n=1. The logged open experiment: watch whether the
 "middle ping" line is what replies focus on.
 
-### 3.3 Open research debts (background, not urgent)
-- Two `[UNVERIFIED LEAD]` items in the playbook (spreadsheet metrics habit; on-camera
-  quote) — re-verify if fetch access ever improves, or delete after 6 months unused.
-- Cut30 weeks 3–4 curriculum: never publicly confirmed.
-- The Open Residency claim (organic hooks → paid ads) is thin; re-verify before citing.
+### 3.3 Open research debts (mostly CLOSED 2026-07-07)
+- ~~Two `[UNVERIFIED LEAD]` items~~ — both traced to Hyper newsletter sources and
+  upgraded to `[DOCUMENTED — paraphrase]` in the playbook (§5).
+- ~~Cut30 weeks 3–4 curriculum~~ — traced from sales-page copy, added to playbook §0.
+- STILL OPEN: the Open Residency claim (organic hooks → paid ads) remains thin —
+  re-verify before citing it to the creator.
 - If the creator ever supplies bootcamp notes: they override everything; integrate them
   into the playbook as a new top-priority tagged section (`[CREATOR'S BOOTCAMP NOTES]`)
   and re-read the whole playbook for contradictions to demote.
