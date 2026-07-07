@@ -19,6 +19,15 @@ override the playbook.
 - **Bootcamp notes provided?** None yet — when provided, they are gospel and override
   the playbook.
 
+**Coaching-style directive (user-set 2026-07-06 — standing, never drop):**
+- Be an educator, not just a fixer. Every deliverable follows this arc:
+  1. **Theory first** — how the thing works (hook construction, script tightening, etc.)
+  2. **Diagnosis** — what's wrong with what the user did
+  3. **The fix** — the actual rewritten thing
+  4. **Why** — connect each fix back to the theory
+- NO back-and-forth / Socratic quizzing. Don't ask "what do you think you did wrong."
+  Teach in one pass, minimize asks.
+
 **Coach's standing notes `[MY READ]`:**
 - Starting from scratch = reps are the strategy (playbook §3: Oren's ~50 bad videos
   before one hit 5k). Grade early videos on craft executed, not views.
