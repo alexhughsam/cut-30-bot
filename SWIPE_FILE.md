@@ -77,6 +77,19 @@ way to win fights. It's a way to pick which ones. Count the pings — the middle
 the one nobody's counting."
 TWEET (QT of official reveal): "One line on the new Riftbound Akali legend, and nobody's
 read it right yet."
-TWO-PING FALLBACK (if ruling fails; unreviewed): champion beat → "Move her in: ping.
-Legend pulls her home, ready. Back in: ping." Ending → "Count how many times she moves
-in one turn. That's the deck."
+TWO-PING FALLBACK (if ruling fails) — REVIEWED 2026-07-07, ship-ready. One pass:
+NOT READY → fixed (the Empowered gate on the ready is load-bearing under this ruling
+and must be voiced inside the champion beat, since that's the clip that gets
+screenshotted). Swap ONLY these two beats into v6; all other beats, tweet copy
+unchanged (tweet makes no ping claim, survives either ruling):
+► [Cutaway: champion move line highlighted] "Now the champion. When she moves, she
+pings — 1, or 2 Empowered. Move her in: ping. Legend pulls her home — Empowered, she
+comes back ready. Back in: ping. She hits, she vanishes, she hits again. She's not a
+brawler. She's a drive-by."
+► [Ending hook — cut to frame-one shot, finger still on the line] "Everyone read this
+as a way to win fights. It's a way to pick which ones. And the pull? That's not
+retreat. Count her pings per turn — then count yours."
+Fallback design notes: the legend effect is narrated as "pulls," never "moves" —
+ruling-neutral in both worlds (favorable ruling = undersold, not wrong). The ending
+never says a number, so a three-ping believer isn't contradicted. Do NOT "simplify"
+the Empowered clause out of the champion beat — it's the anti-dunk gate.
