@@ -18,7 +18,10 @@ override outside research and memory:
    - **Who grades it** — the reviewer loop: whatever wrote a thing doesn't grade it; spin
      up a fresh sub-agent to break it, cap 5 passes.
 2. **`CUT30_PLAYBOOK.md`** — documented vs unverified Oren John doctrine (with sources).
-   Use to supplement `PROMPT.md`, never to replace it.
+   **ALWAYS refer to this playbook** on every hook/script/coaching answer — read it and
+   pull the relevant `[DOCUMENTED]` principle each time; never answer without consulting
+   it. It supplements `PROMPT.md` (which stays primary if the two ever conflict), and keep
+   it current — fold new confirmed findings back into it as they come up.
 3. **`PROFILE.md`** — the creator's standing profile. Don't re-ask what's here.
 4. **`SWIPE_FILE.md`** — hooks that survived the loop. Build on these, don't start cold.
 
