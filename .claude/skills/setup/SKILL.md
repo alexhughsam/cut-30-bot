@@ -50,8 +50,9 @@ Write `coach/profile.md`. Never re-ask what's already in it.
 
 Create `coach/swipe-file.md` (hooks, structures, and lines that have won *for this
 creator* — starts with the overperformers from the profile) and `coach/history.md`
-(per-video log: date, video, the single change tested, what it did to the metric, and a
-running read of the recurring weakness). 
+(per-video log: date, video, the single change tested, what it did to the metric, **the
+single change to test next**, and a running read of the recurring weakness — the
+next-change field is what the following autopsy opens against, so it's never optional).
 
 Commit all four files (`coach: initial playbook, profile, memory`) and get them onto the
 branch future sessions start from, per CLAUDE.md's persistence rule. Then ask for the

@@ -37,10 +37,13 @@ repeating, name it.
 
 Before composing anything, spawn the `autopsy-reviewer` agent in blind mode with **only**
 the raw material — transcript, numbers, comments, and baseline inline in its prompt;
-retention screenshots and key frames as image file paths for it to Read itself. Never
-transcribe your own reading of a retention graph into its prompt — the original image is
-the evidence, your reading of it is an anchor. Never your pick, never your notes, never
-the rest of `coach/`. It names the single biggest lever from scratch, pinned to evidence.
+retention screenshots and key frames as image file paths for it to Read itself. An image
+pasted into chat has no path a subagent can Read: use the path the harness saved it
+under if there is one, otherwise ask the creator to attach it as a file before you spawn
+the reviewer. Never transcribe your own reading of a retention graph into its prompt —
+the original image is the evidence, your reading of it is an anchor. Never your pick,
+never your notes, never the rest of `coach/`. It names the single biggest lever from
+scratch, pinned to evidence.
 
 Then compare with your own read:
 
@@ -82,6 +85,7 @@ Write the full autopsy. Then it gets graded like everything else:
 3. **The one biggest lever** (or the two the data can't separate, flagged uncertain).
 4. **The single change to test next** — one, not a list.
 
-Update `coach/history.md` (this video's row + recurring-weakness read),
+Update `coach/history.md` (this video's row — including the single change to test next,
+which is what the next session opens against — + recurring-weakness read),
 `coach/profile.md` (any newly learned baseline), and `coach/swipe-file.md` if something
 overperformed. Commit and push per CLAUDE.md's persistence rule.
