@@ -196,7 +196,7 @@ function watchlistTable(channels) {
     <tr>
       <td>${esc(c.title || c.handle || c.external_id)}</td>
       <td class="mono">${num(c.baseline_views)} ${c.baseline_sample ? `<span class="muted">(n=${c.baseline_sample})</span>` : ''}<br>${statNote(c.baseline_source, c.baseline_fetched_at)}</td>
-      <td class="mono">${num(c.subscriber_count)}</td>
+      <td class="mono">${num(c.subscriber_count)}${c.subscriber_count != null ? `<br>${statNote(c.stats_source, c.stats_fetched_at)}` : ''}</td>
       <td class="row">
         ${c.external_id ? `<button class="btn small" data-chan-videos="${c.id}">Recent videos</button>` : ''}
         <button class="btn small danger" data-unwatch="${c.id}">Remove</button>
@@ -599,7 +599,7 @@ async function paintScriptWorkspace(id) {
         <h3>Research to draw on ${s.pillar ? `<span class="muted">(${esc(s.pillar)} first)</span>` : ''}</h3>
         ${ctx.videos.length ? `<div class="checkbox-list">${ctx.videos.map((v) => `
           <label><input type="checkbox" data-video-check="${v.id}" ${chosenVideos.includes(v.id) ? 'checked' : ''}/>
-          <span>${esc(v.title)} <span class="muted mono">${num(v.views)} views${v.outlier_score != null ? `, ×${Number(v.outlier_score).toFixed(1)}` : ''}</span></span></label>`).join('')}</div>`
+          <span>${esc(v.title)} <span class="muted mono">${num(v.views)} views${v.outlier_score != null ? `, ×${Number(v.outlier_score).toFixed(1)}` : ''}</span> ${statNote(v.stats_source, v.stats_fetched_at)}</span></label>`).join('')}</div>`
         : '<div class="empty">No research saved yet.</div>'}
         <div class="row" style="margin-top:10px">
           <button class="btn primary" id="btn-ws-generate">${claudeOn ? 'Draft with Claude' : 'Build template scaffold'}</button>

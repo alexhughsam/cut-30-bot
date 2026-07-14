@@ -16,7 +16,7 @@ export async function tryFetchYouTubeTranscript(videoId) {
     const res = await fetchWithTimeout(`https://www.youtube.com/watch?v=${videoId}`, {
       headers: { 'accept-language': 'en' },
     });
-    if (!res.ok) return { ok: false, reason: `youtube.com returned HTTP ${res.status}` };
+    if (!res.ok) return { ok: false, reason: `youtube.com is unreachable (HTTP ${res.status} — this network may block it, or YouTube refused the request)` };
     html = await res.text();
   } catch (err) {
     return { ok: false, reason: `Could not reach youtube.com (${err.message}). This network may block it; paste the transcript manually or run the app on a machine with open internet.` };

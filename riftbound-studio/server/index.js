@@ -18,12 +18,25 @@ const PORT = process.env.PORT || 4173;
 
 // Wrap async handlers so errors surface as JSON, not hangs.
 const h = (fn) => (req, res) => Promise.resolve(fn(req, res)).catch((err) => {
-  const status = err.name === 'LLMUnavailableError' || err.reason === 'not_configured' ? 424 : 500;
+  const status = err.status
+    || (err.name === 'LLMUnavailableError' || err.reason === 'not_configured' ? 424 : 500);
   res.status(status).json({ error: err.message });
 });
 
 const nowIso = () => new Date().toISOString();
 const parseJson = (s, fb) => { try { return JSON.parse(s); } catch { return fb; } };
+const httpError = (status, msg) => Object.assign(new Error(msg), { status });
+
+// Parse a user-supplied count/stat. Absent ('' / null / undefined) → null.
+// Present but not a finite number ≥ 0 → 400: a garbage stat must never get a
+// source label attached to it.
+function parseCount(value, field, { max = null } = {}) {
+  if (value == null || value === '') return null;
+  const n = Number(value);
+  if (!Number.isFinite(n) || n < 0) throw httpError(400, `"${field}" must be a non-negative number (got ${JSON.stringify(value)}).`);
+  if (max != null && n > max) throw httpError(400, `"${field}" must be ≤ ${max}.`);
+  return n;
+}
 
 // ---------- status ----------
 app.get('/api/status', h(async (req, res) => {
@@ -201,6 +214,37 @@ function upsertVideo(v) {
 
 app.post('/api/videos/save', h(async (req, res) => {
   const v = req.body;
+  // Provenance is enforced server-side: a client claim of 'youtube_api' is only
+  // honored by re-fetching the stats from the API ourselves. Otherwise the row
+  // is labeled manual — the source label is a guarantee, not an input field.
+  if (v.stats_source === 'youtube_api') {
+    if (yt.isConfigured() && v.external_id && (v.platform || 'youtube') === 'youtube') {
+      const [fresh] = await yt.videosByIds([v.external_id]);
+      if (!fresh) throw httpError(400, 'Claimed YouTube stats could not be verified: the API does not return this video.');
+      Object.assign(v, fresh);
+      if (v.channel_baseline_views != null && fresh.channel_external_id) {
+        // Recompute the claimed baseline from the API instead of trusting it.
+        try {
+          const b = await yt.channelBaseline(fresh.channel_external_id, { sample: 10 });
+          v.channel_baseline_views = b.baseline_views;
+          v.channel_baseline_sample = b.baseline_sample;
+          v.outlier_score = yt.outlierScore(fresh.views, b.baseline_views);
+        } catch {
+          v.channel_baseline_views = null; v.channel_baseline_sample = null; v.outlier_score = null;
+        }
+      }
+    } else {
+      v.stats_source = v.views != null ? 'manual' : null;
+      v.stats_fetched_at = v.views != null ? nowIso() : null;
+      v.channel_baseline_views = null; // unverifiable claim → drop, don't relabel
+      v.outlier_score = null;
+    }
+  } else if (v.stats_source != null && v.stats_source !== 'manual') {
+    throw httpError(400, `Unknown stats_source ${JSON.stringify(v.stats_source)} — only 'youtube_api' (verified server-side) or 'manual' are accepted.`);
+  }
+  v.views = parseCount(v.views, 'views');
+  v.likes = parseCount(v.likes, 'likes');
+  v.comments = parseCount(v.comments, 'comments');
   if (!v.pillar) {
     const cls = classifyPillar(v.title || '');
     v.pillar = cls.pillar; v.pillar_source = 'keyword';
@@ -225,19 +269,20 @@ app.post('/api/videos/save', h(async (req, res) => {
 app.post('/api/videos/import', h(async (req, res) => {
   const { url, title, channel_title, views, likes, comments, duration_seconds, published_at, pillar, platform, transcript, channel_baseline_views } = req.body;
   const videoId = yt.extractVideoId(url);
+  const viewsNum = parseCount(views, 'views');
   let base = {
     platform: platform || (videoId ? 'youtube' : 'other'),
     external_id: videoId,
     url: url || null,
     title: title || null,
     channel_title: channel_title || null,
-    views: views != null && views !== '' ? Number(views) : null,
-    likes: likes != null && likes !== '' ? Number(likes) : null,
-    comments: comments != null && comments !== '' ? Number(comments) : null,
-    duration_seconds: duration_seconds != null && duration_seconds !== '' ? Number(duration_seconds) : null,
+    views: viewsNum,
+    likes: parseCount(likes, 'likes'),
+    comments: parseCount(comments, 'comments'),
+    duration_seconds: parseCount(duration_seconds, 'duration_seconds'),
     published_at: published_at || null,
-    stats_source: views != null && views !== '' ? 'manual' : null,
-    stats_fetched_at: views != null && views !== '' ? nowIso() : null,
+    stats_source: viewsNum != null ? 'manual' : null,
+    stats_fetched_at: viewsNum != null ? nowIso() : null,
   };
   let hydrated = false;
   let hydrate_note = null;
@@ -255,12 +300,13 @@ app.post('/api/videos/import', h(async (req, res) => {
 
   if (!base.title) return res.status(400).json({ error: 'Need at least a title (auto-fetch was unavailable — check the URL or enter fields manually).' });
 
-  if (channel_baseline_views != null && channel_baseline_views !== '') {
-    base.outlier_score = yt.outlierScore(base.views, Number(channel_baseline_views));
+  const baselineNum = parseCount(channel_baseline_views, 'channel_baseline_views');
+  if (baselineNum != null) {
+    base.outlier_score = yt.outlierScore(base.views, baselineNum);
     if (base.channel_title || base.channel_external_id) {
       const chan = upsertChannel({
         platform: base.platform, external_id: base.channel_external_id || null, title: base.channel_title,
-        baseline_views: Number(channel_baseline_views), baseline_sample: null,
+        baseline_views: baselineNum, baseline_sample: null,
         baseline_source: 'manual', baseline_fetched_at: nowIso(),
       });
       base.channel_id = chan.id;
@@ -302,7 +348,8 @@ app.get('/api/videos/:id', h(async (req, res) => {
 }));
 
 app.delete('/api/videos/:id', h(async (req, res) => {
-  db.prepare('DELETE FROM videos WHERE id = ?').run(req.params.id);
+  const info = db.prepare('DELETE FROM videos WHERE id = ?').run(req.params.id);
+  if (!info.changes) return res.status(404).json({ error: 'Not found' });
   res.json({ ok: true });
 }));
 
@@ -398,7 +445,8 @@ app.patch('/api/vault/:id', h(async (req, res) => {
 }));
 
 app.delete('/api/vault/:id', h(async (req, res) => {
-  db.prepare('DELETE FROM vault_entries WHERE id = ?').run(req.params.id);
+  const info = db.prepare('DELETE FROM vault_entries WHERE id = ?').run(req.params.id);
+  if (!info.changes) return res.status(404).json({ error: 'Not found' });
   res.json({ ok: true });
 }));
 
@@ -434,7 +482,8 @@ app.patch('/api/scripts/:id', h(async (req, res) => {
 }));
 
 app.delete('/api/scripts/:id', h(async (req, res) => {
-  db.prepare('DELETE FROM scripts WHERE id = ?').run(req.params.id);
+  const info = db.prepare('DELETE FROM scripts WHERE id = ?').run(req.params.id);
+  if (!info.changes) return res.status(404).json({ error: 'Not found' });
   res.json({ ok: true });
 }));
 
@@ -510,12 +559,13 @@ app.get('/api/myvideos', h(async (req, res) => {
 app.post('/api/myvideos', h(async (req, res) => {
   const { platform, url, title, posted_at, views, likes, comments, retention_pct, script_id, pillar, vault_entry_ids, notes } = req.body;
   if (!title || views == null || views === '') return res.status(400).json({ error: 'Need at least a title and view count.' });
+  const viewsNum = parseCount(views, 'views');
+  if (viewsNum == null) return res.status(400).json({ error: 'Need at least a title and view count.' });
   const info = db.prepare(`INSERT INTO my_videos (platform, url, title, posted_at, views, likes, comments, retention_pct, script_id, pillar, vault_entry_ids, notes)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
-    platform || 'youtube', url || null, title, posted_at || null, Number(views),
-    likes != null && likes !== '' ? Number(likes) : null,
-    comments != null && comments !== '' ? Number(comments) : null,
-    retention_pct != null && retention_pct !== '' ? Number(retention_pct) : null,
+    platform || 'youtube', url || null, title, posted_at || null, viewsNum,
+    parseCount(likes, 'likes'), parseCount(comments, 'comments'),
+    parseCount(retention_pct, 'retention_pct', { max: 100 }),
     script_id || null, pillar || null, JSON.stringify(vault_entry_ids || []), notes || null);
   res.json(db.prepare('SELECT * FROM my_videos WHERE id = ?').get(info.lastInsertRowid));
 }));
@@ -530,7 +580,8 @@ app.patch('/api/myvideos/:id', h(async (req, res) => {
 }));
 
 app.delete('/api/myvideos/:id', h(async (req, res) => {
-  db.prepare('DELETE FROM my_videos WHERE id = ?').run(req.params.id);
+  const info = db.prepare('DELETE FROM my_videos WHERE id = ?').run(req.params.id);
+  if (!info.changes) return res.status(404).json({ error: 'Not found' });
   res.json({ ok: true });
 }));
 
@@ -539,6 +590,16 @@ app.get('/api/export', h(async (req, res) => {
   res.setHeader('Content-Disposition', 'attachment; filename="riftbound-studio-export.json"');
   res.json(exportAll());
 }));
+
+// Body-parser and other middleware errors must come back as JSON too — never
+// an HTML stack trace.
+app.use((err, req, res, next) => {
+  if (res.headersSent) return next(err);
+  const status = err.type === 'entity.parse.failed' ? 400 : (err.status || 500);
+  res.status(status).json({
+    error: err.type === 'entity.parse.failed' ? 'Malformed JSON request body.' : err.message || 'Internal error',
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Riftbound Studio running at http://localhost:${PORT}`);

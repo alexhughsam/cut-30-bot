@@ -97,7 +97,9 @@ export function analyzeWithRules({ transcript, durationSeconds }) {
 
 export async function analyzeTranscript(input) {
   if (!input.transcript || input.transcript.trim().length < 20) {
-    throw new Error('Transcript is missing or too short to analyze. Fetch or paste a transcript first.');
+    const err = new Error('Transcript is missing or too short to analyze. Fetch or paste a transcript first.');
+    err.status = 400;
+    throw err;
   }
   if (llmConfigured()) {
     try {
