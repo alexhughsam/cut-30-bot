@@ -129,3 +129,15 @@ fix below RAISES a bar (permitted); nothing below relaxes anything above.
    a gap-closing pass adds to the deliverable must be spot-checked with the same
    rigor as first-draft claims before the next review; a reviewer's instruction is a
    lead, not a fact.
+
+## 8. Raised after review pass 4 (2026-07-14) — bars may only go UP
+
+1. **The §6.4 index sweep extends to EVERY covered game.** Before an N-day window is
+   declared complete, each covered game's official organized-play/events calendar
+   (e.g. magic.gg schedule, disneylorcana.com Challenge pages, Bandai events pages)
+   must be swept, not just the primary game's publisher index.
+2. **Every game named in the map carries the window-completeness obligation.** If the
+   map covers a game at all (including Yu-Gi-Oh, Gundam), its in-window events are
+   subject to §3 — no credit for coverage that can't fail.
+3. **Universal negatives cap at MED on snippet evidence.** "No X exists anywhere"
+   cannot be HIGH-confidence while any relevant directory remains unread.
