@@ -54,7 +54,7 @@ export function parseDuration(iso) {
 }
 
 export function extractVideoId(input) {
-  if (!input) return null;
+  if (!input || typeof input !== 'string') return null;
   const s = input.trim();
   if (/^[A-Za-z0-9_-]{11}$/.test(s)) return s;
   try {

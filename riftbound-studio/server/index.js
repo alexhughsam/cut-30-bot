@@ -38,6 +38,30 @@ function parseCount(value, field, { max = null } = {}) {
   return n;
 }
 
+// A URL field must be a string (or absent) — anything else is a 400, not a 500.
+function parseUrl(value, field = 'url') {
+  if (value == null || value === '') return null;
+  if (typeof value !== 'string') throw httpError(400, `"${field}" must be a string.`);
+  return value.trim() || null;
+}
+
+function parsePillar(value, { required = false } = {}) {
+  if (value == null || value === '') {
+    if (required) throw httpError(400, `"pillar" must be one of: ${PILLARS.join(', ')}.`);
+    return null;
+  }
+  if (!PILLARS.includes(value)) throw httpError(400, `"pillar" must be one of: ${PILLARS.join(', ')} (got ${JSON.stringify(value)}).`);
+  return value;
+}
+
+function parseIdArray(value, field) {
+  if (value == null) return null;
+  if (!Array.isArray(value) || value.some((x) => !Number.isInteger(Number(x)))) {
+    throw httpError(400, `"${field}" must be an array of ids.`);
+  }
+  return value.map(Number);
+}
+
 // ---------- status ----------
 app.get('/api/status', h(async (req, res) => {
   res.json({
@@ -267,13 +291,15 @@ app.post('/api/videos/save', h(async (req, res) => {
 
 // Manual import: URL (auto-hydrated when possible) or fully manual fields.
 app.post('/api/videos/import', h(async (req, res) => {
-  const { url, title, channel_title, views, likes, comments, duration_seconds, published_at, pillar, platform, transcript, channel_baseline_views } = req.body;
+  const { title, channel_title, views, likes, comments, duration_seconds, published_at, pillar, platform, transcript, channel_baseline_views } = req.body;
+  const url = parseUrl(req.body.url);
+  parsePillar(pillar); // reject unknown pillar labels up front
   const videoId = yt.extractVideoId(url);
   const viewsNum = parseCount(views, 'views');
   let base = {
     platform: platform || (videoId ? 'youtube' : 'other'),
     external_id: videoId,
-    url: url || null,
+    url,
     title: title || null,
     channel_title: channel_title || null,
     views: viewsNum,
@@ -356,7 +382,10 @@ app.delete('/api/videos/:id', h(async (req, res) => {
 app.patch('/api/videos/:id', h(async (req, res) => {
   const v = db.prepare('SELECT * FROM videos WHERE id = ?').get(req.params.id);
   if (!v) return res.status(404).json({ error: 'Video not found' });
-  if (req.body.pillar) db.prepare('UPDATE videos SET pillar = ?, pillar_source = ? WHERE id = ?').run(req.body.pillar, 'manual', v.id);
+  if (req.body.pillar) {
+    const p = parsePillar(req.body.pillar, { required: true });
+    db.prepare('UPDATE videos SET pillar = ?, pillar_source = ? WHERE id = ?').run(p, 'manual', v.id);
+  }
   res.json(db.prepare('SELECT * FROM videos WHERE id = ?').get(v.id));
 }));
 
@@ -464,6 +493,7 @@ app.get('/api/scripts/:id', h(async (req, res) => {
 app.post('/api/scripts', h(async (req, res) => {
   const { title, idea, pillar } = req.body;
   if (!title) return res.status(400).json({ error: 'Scripts need a title.' });
+  parsePillar(pillar);
   const info = db.prepare('INSERT INTO scripts (title, idea, pillar) VALUES (?, ?, ?)').run(title, idea || null, pillar || null);
   res.json(db.prepare('SELECT * FROM scripts WHERE id = ?').get(info.lastInsertRowid));
 }));
@@ -471,12 +501,18 @@ app.post('/api/scripts', h(async (req, res) => {
 app.patch('/api/scripts/:id', h(async (req, res) => {
   const s = db.prepare('SELECT * FROM scripts WHERE id = ?').get(req.params.id);
   if (!s) return res.status(404).json({ error: 'Script not found' });
+  if (req.body.status != null && !['draft', 'final'].includes(req.body.status)) {
+    throw httpError(400, '"status" must be \'draft\' or \'final\'.');
+  }
+  if (req.body.pillar != null) parsePillar(req.body.pillar, { required: true });
+  const vaultIds = parseIdArray(req.body.vault_entry_ids, 'vault_entry_ids');
+  const videoIds = parseIdArray(req.body.research_video_ids, 'research_video_ids');
   db.prepare(`UPDATE scripts SET title = ?, idea = ?, pillar = ?, content = ?, status = ?,
     vault_entry_ids = ?, research_video_ids = ?, updated_at = datetime('now') WHERE id = ?`).run(
     req.body.title ?? s.title, req.body.idea ?? s.idea, req.body.pillar ?? s.pillar,
     req.body.content ?? s.content, req.body.status ?? s.status,
-    req.body.vault_entry_ids != null ? JSON.stringify(req.body.vault_entry_ids) : s.vault_entry_ids,
-    req.body.research_video_ids != null ? JSON.stringify(req.body.research_video_ids) : s.research_video_ids,
+    vaultIds != null ? JSON.stringify(vaultIds) : s.vault_entry_ids,
+    videoIds != null ? JSON.stringify(videoIds) : s.research_video_ids,
     s.id);
   res.json(db.prepare('SELECT * FROM scripts WHERE id = ?').get(s.id));
 }));
@@ -503,8 +539,12 @@ app.get('/api/scripts/:id/context', h(async (req, res) => {
 app.post('/api/scripts/:id/generate', h(async (req, res) => {
   const s = db.prepare('SELECT * FROM scripts WHERE id = ?').get(req.params.id);
   if (!s) return res.status(404).json({ error: 'Script not found' });
-  const vaultIds = req.body.vault_entry_ids || parseJson(s.vault_entry_ids, []);
-  const videoIds = req.body.research_video_ids || parseJson(s.research_video_ids, []);
+  const storedVault = parseJson(s.vault_entry_ids, []);
+  const storedVideos = parseJson(s.research_video_ids, []);
+  const vaultIds = parseIdArray(req.body.vault_entry_ids, 'vault_entry_ids')
+    ?? (Array.isArray(storedVault) ? storedVault : []);
+  const videoIds = parseIdArray(req.body.research_video_ids, 'research_video_ids')
+    ?? (Array.isArray(storedVideos) ? storedVideos : []);
   const vaultEntries = vaultIds.length
     ? db.prepare(`SELECT * FROM vault_entries WHERE id IN (${vaultIds.map(() => '?').join(',')})`).all(...vaultIds)
     : [];
@@ -561,21 +601,29 @@ app.post('/api/myvideos', h(async (req, res) => {
   if (!title || views == null || views === '') return res.status(400).json({ error: 'Need at least a title and view count.' });
   const viewsNum = parseCount(views, 'views');
   if (viewsNum == null) return res.status(400).json({ error: 'Need at least a title and view count.' });
+  parsePillar(pillar);
   const info = db.prepare(`INSERT INTO my_videos (platform, url, title, posted_at, views, likes, comments, retention_pct, script_id, pillar, vault_entry_ids, notes)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
-    platform || 'youtube', url || null, title, posted_at || null, viewsNum,
+    platform || 'youtube', parseUrl(url), title, posted_at || null, viewsNum,
     parseCount(likes, 'likes'), parseCount(comments, 'comments'),
     parseCount(retention_pct, 'retention_pct', { max: 100 }),
-    script_id || null, pillar || null, JSON.stringify(vault_entry_ids || []), notes || null);
+    script_id || null, pillar || null, JSON.stringify(parseIdArray(vault_entry_ids, 'vault_entry_ids') || []), notes || null);
   res.json(db.prepare('SELECT * FROM my_videos WHERE id = ?').get(info.lastInsertRowid));
 }));
 
 app.patch('/api/myvideos/:id', h(async (req, res) => {
   const m = db.prepare('SELECT * FROM my_videos WHERE id = ?').get(req.params.id);
   if (!m) return res.status(404).json({ error: 'Not found' });
+  // Same validation as create: a mutated stat is still a stat.
+  const views = req.body.views != null ? parseCount(req.body.views, 'views') : m.views;
+  if (views == null) throw httpError(400, '"views" cannot be cleared — it anchors your baseline.');
+  const likes = req.body.likes !== undefined ? parseCount(req.body.likes, 'likes') : m.likes;
+  const comments = req.body.comments !== undefined ? parseCount(req.body.comments, 'comments') : m.comments;
+  const retention = req.body.retention_pct !== undefined ? parseCount(req.body.retention_pct, 'retention_pct', { max: 100 }) : m.retention_pct;
+  const pillar = req.body.pillar != null ? parsePillar(req.body.pillar, { required: true }) : m.pillar;
   db.prepare(`UPDATE my_videos SET title = ?, views = ?, likes = ?, comments = ?, retention_pct = ?, pillar = ?, script_id = ?, notes = ?, stats_entered_at = datetime('now') WHERE id = ?`)
-    .run(req.body.title ?? m.title, req.body.views ?? m.views, req.body.likes ?? m.likes, req.body.comments ?? m.comments,
-      req.body.retention_pct ?? m.retention_pct, req.body.pillar ?? m.pillar, req.body.script_id ?? m.script_id, req.body.notes ?? m.notes, m.id);
+    .run(req.body.title ?? m.title, views, likes, comments, retention, pillar,
+      req.body.script_id ?? m.script_id, req.body.notes ?? m.notes, m.id);
   res.json(db.prepare('SELECT * FROM my_videos WHERE id = ?').get(m.id));
 }));
 

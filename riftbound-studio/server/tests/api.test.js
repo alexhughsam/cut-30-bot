@@ -147,6 +147,31 @@ test('full API round-trip with restart persistence', async (t) => {
   r = await api(`/api/videos/${shortVid.data.id}/analyze`, { method: 'POST' });
   assert.equal(r.status, 400, 'too-short transcript should be a 400');
 
+  // ---- mutation endpoints get the same validation as creation ----
+  const myVideos = (await api('/api/myvideos')).data.videos;
+  const mid = myVideos[0].id;
+  r = await api(`/api/myvideos/${mid}`, { method: 'PATCH', body: { views: 'abc' } });
+  assert.equal(r.status, 400, 'PATCH myvideos with non-numeric views must be rejected');
+  r = await api(`/api/myvideos/${mid}`, { method: 'PATCH', body: { retention_pct: 999 } });
+  assert.equal(r.status, 400, 'PATCH myvideos with retention > 100 must be rejected');
+  r = await api(`/api/myvideos/${mid}`, { method: 'PATCH', body: { pillar: 'notapillar' } });
+  assert.equal(r.status, 400, 'PATCH myvideos with unknown pillar must be rejected');
+  r = await api('/api/myvideos');
+  assert.equal(r.data.summary.baseline_views, 2650, 'failed PATCHes must not corrupt the baseline');
+  r = await api(`/api/videos/${videoId}`, { method: 'PATCH', body: { pillar: 'notapillar' } });
+  assert.equal(r.status, 400, 'PATCH videos with unknown pillar must be rejected');
+  r = await api(`/api/scripts/${scriptId}`, { method: 'PATCH', body: { status: 'bogus' } });
+  assert.equal(r.status, 400, 'PATCH scripts with unknown status must be rejected');
+  r = await api(`/api/scripts/${scriptId}`, { method: 'PATCH', body: { vault_entry_ids: 'not-an-array' } });
+  assert.equal(r.status, 400, 'PATCH scripts with non-array vault ids must be rejected');
+  r = await api(`/api/scripts/${scriptId}/generate`, { method: 'POST', body: { vault_entry_ids: 'not-an-array' } });
+  assert.equal(r.status, 400, 'generate with non-array vault ids must be rejected');
+  r = await api('/api/videos/import', { method: 'POST', body: { title: 'numeric url', url: 12345 } });
+  assert.equal(r.status, 400, 'non-string url must be a 400, not a 500');
+  r = await api(`/api/scripts/${scriptId}/generate`, { method: 'POST', body: {} });
+  assert.equal(r.status, 200, 'generate still works after failed garbage PATCHes');
+  assert.match(r.data.content, new RegExp(`vault #${vaultId}`), 'stored vault selection intact');
+
   // ---- restart persistence ----
   await stopServer();
   await startServer();
