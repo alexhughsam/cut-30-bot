@@ -172,6 +172,37 @@ test('full API round-trip with restart persistence', async (t) => {
   assert.equal(r.status, 200, 'generate still works after failed garbage PATCHes');
   assert.match(r.data.content, new RegExp(`vault #${vaultId}`), 'stored vault selection intact');
 
+  // ---- type hygiene: objects/arrays in text fields, FK checks, enums ----
+  r = await api('/api/videos/import', { method: 'POST', body: { title: { evil: true }, views: 5 } });
+  assert.equal(r.status, 400, 'object title must be 400');
+  r = await api('/api/videos/import', { method: 'POST', body: { title: 'x', channel_title: ['a'] } });
+  assert.equal(r.status, 400, 'array channel_title must be 400');
+  r = await api(`/api/videos/${videoId}/transcript`, { method: 'POST', body: { transcript: 42 } });
+  assert.equal(r.status, 400, 'numeric transcript must be 400');
+  r = await api('/api/vault', { method: 'POST', body: { name: 'x', kind: 'weird', content: 'y' } });
+  assert.equal(r.status, 400, 'unknown vault kind must be 400');
+  r = await api(`/api/vault/${vaultId}`, { method: 'PATCH', body: { name: { a: 1 } } });
+  assert.equal(r.status, 400, 'object vault name must be 400');
+  r = await api('/api/settings', { method: 'POST', body: { niche: { a: 1 } } });
+  assert.equal(r.status, 400, 'object niche must be 400');
+  r = await api('/api/channels/watch', { method: 'POST', body: { title: { a: 1 } } });
+  assert.equal(r.status, 400, 'object watch title must be 400');
+  r = await api('/api/scripts', { method: 'POST', body: { title: ['arr'] } });
+  assert.equal(r.status, 400, 'array script title must be 400');
+  r = await api('/api/myvideos', { method: 'POST', body: { title: 'x', views: 1, script_id: 99999 } });
+  assert.equal(r.status, 400, 'nonexistent script_id must be 400, not FK 500');
+  r = await api('/api/myvideos', { method: 'POST', body: { title: 'x', views: 1, script_id: 'abc' } });
+  assert.equal(r.status, 400, 'garbage script_id must be 400');
+
+  // ---- derived stats stay consistent on re-import ----
+  r = await api('/api/videos/import', {
+    method: 'POST',
+    body: { url: 'https://www.youtube.com/shorts/abc123XYZ_-', title: 'Is Riftbound sealed worth buying? Box prices are insane', views: 500000 },
+  });
+  assert.equal(r.status, 200);
+  assert.equal(r.data.id, videoId, 'same URL upserts, not duplicates');
+  assert.equal(r.data.outlier_score, 25, 'outlier recomputed from stored channel baseline (500000/20000), not stale');
+
   // ---- restart persistence ----
   await stopServer();
   await startServer();

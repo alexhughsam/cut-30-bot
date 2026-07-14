@@ -54,6 +54,27 @@ function parsePillar(value, { required = false } = {}) {
   return value;
 }
 
+// Text fields must be strings (or absent) — objects/arrays are a 400.
+function parseText(value, field, { required = false } = {}) {
+  if (value == null || value === '') {
+    if (required) throw httpError(400, `"${field}" is required.`);
+    return null;
+  }
+  if (typeof value !== 'string') throw httpError(400, `"${field}" must be a string.`);
+  const t = value.trim();
+  if (!t && required) throw httpError(400, `"${field}" is required.`);
+  return t || null;
+}
+
+function parseScriptId(value) {
+  if (value == null || value === '') return null;
+  const id = Number(value);
+  if (!Number.isInteger(id) || !db.prepare('SELECT id FROM scripts WHERE id = ?').get(id)) {
+    throw httpError(400, `"script_id" ${JSON.stringify(value)} does not match an existing script.`);
+  }
+  return id;
+}
+
 function parseIdArray(value, field) {
   if (value == null) return null;
   if (!Array.isArray(value) || value.some((x) => !Number.isInteger(Number(x)))) {
@@ -89,7 +110,8 @@ app.get('/api/status', h(async (req, res) => {
 }));
 
 app.post('/api/settings', h(async (req, res) => {
-  if (req.body.niche) setSetting('niche', String(req.body.niche));
+  const niche = parseText(req.body.niche, 'niche');
+  if (niche) setSetting('niche', niche);
   res.json({ ok: true, niche: getSetting('niche', 'Riftbound') });
 }));
 
@@ -126,7 +148,9 @@ app.get('/api/channels', h(async (req, res) => {
 // Add a channel to the watchlist. With the API: by channel URL/id, hydrated +
 // baseline computed. Without: manual entry with a user-supplied baseline.
 app.post('/api/channels/watch', h(async (req, res) => {
-  const { external_id, title, url, manual_baseline_views, manual_baseline_sample, platform } = req.body;
+  const { external_id, manual_baseline_views, manual_baseline_sample, platform } = req.body;
+  const title = parseText(req.body.title, 'title');
+  const url = parseUrl(req.body.url);
   if (yt.isConfigured() && external_id) {
     const b = await yt.channelBaseline(external_id);
     const chan = upsertChannel({
@@ -146,10 +170,10 @@ app.post('/api/channels/watch', h(async (req, res) => {
     title,
     url: url || null,
     watchlisted: 1,
-    baseline_views: manual_baseline_views != null ? Number(manual_baseline_views) : null,
-    baseline_sample: manual_baseline_sample != null ? Number(manual_baseline_sample) : null,
-    baseline_source: manual_baseline_views != null ? 'manual' : null,
-    baseline_fetched_at: manual_baseline_views != null ? nowIso() : null,
+    baseline_views: parseCount(manual_baseline_views, 'manual_baseline_views'),
+    baseline_sample: parseCount(manual_baseline_sample, 'manual_baseline_sample'),
+    baseline_source: parseCount(manual_baseline_views, 'manual_baseline_views') != null ? 'manual' : null,
+    baseline_fetched_at: parseCount(manual_baseline_views, 'manual_baseline_views') != null ? nowIso() : null,
   });
   db.prepare('UPDATE channels SET watchlisted = 1 WHERE id = ?').run(chan.id);
   res.json(db.prepare('SELECT * FROM channels WHERE id = ?').get(chan.id));
@@ -291,8 +315,11 @@ app.post('/api/videos/save', h(async (req, res) => {
 
 // Manual import: URL (auto-hydrated when possible) or fully manual fields.
 app.post('/api/videos/import', h(async (req, res) => {
-  const { title, channel_title, views, likes, comments, duration_seconds, published_at, pillar, platform, transcript, channel_baseline_views } = req.body;
+  const { views, likes, comments, duration_seconds, published_at, pillar, platform, channel_baseline_views } = req.body;
   const url = parseUrl(req.body.url);
+  const title = parseText(req.body.title, 'title');
+  const channel_title = parseText(req.body.channel_title, 'channel_title');
+  const transcript = parseText(req.body.transcript, 'transcript');
   parsePillar(pillar); // reject unknown pillar labels up front
   const videoId = yt.extractVideoId(url);
   const viewsNum = parseCount(views, 'views');
@@ -352,9 +379,17 @@ app.post('/api/videos/import', h(async (req, res) => {
   base.niche = getSetting('niche', 'Riftbound');
 
   const saved = upsertVideo(base);
-  if (transcript && transcript.trim()) {
+  // Keep the derived stat consistent: if this import changed the views but
+  // supplied no baseline, recompute the outlier from the stored channel
+  // baseline (or clear it) instead of leaving a stale views/old-baseline mix.
+  if (base.views != null && base.outlier_score == null) {
+    const chan = saved.channel_id ? db.prepare('SELECT baseline_views FROM channels WHERE id = ?').get(saved.channel_id) : null;
+    const recomputed = yt.outlierScore(base.views, chan?.baseline_views);
+    db.prepare('UPDATE videos SET outlier_score = ? WHERE id = ?').run(recomputed, saved.id);
+  }
+  if (transcript) {
     db.prepare('UPDATE videos SET transcript = ?, transcript_source = ?, transcript_fetched_at = ? WHERE id = ?')
-      .run(transcript.trim(), 'manual', nowIso(), saved.id);
+      .run(transcript, 'manual', nowIso(), saved.id);
   }
   res.json({ ...db.prepare('SELECT * FROM videos WHERE id = ?').get(saved.id), hydrated, hydrate_note });
 }));
@@ -407,7 +442,7 @@ app.post('/api/videos/:id/refresh', h(async (req, res) => {
 app.post('/api/videos/:id/transcript', h(async (req, res) => {
   const v = db.prepare('SELECT * FROM videos WHERE id = ?').get(req.params.id);
   if (!v) return res.status(404).json({ error: 'Video not found' });
-  const text = (req.body.transcript || '').trim();
+  const text = parseText(req.body.transcript, 'transcript');
   if (!text) return res.status(400).json({ error: 'Transcript text is empty.' });
   db.prepare('UPDATE videos SET transcript = ?, transcript_source = ?, transcript_fetched_at = ? WHERE id = ?')
     .run(text, 'manual', nowIso(), v.id);
@@ -458,18 +493,28 @@ app.get('/api/vault', h(async (req, res) => {
 }));
 
 app.post('/api/vault', h(async (req, res) => {
-  const { name, kind, content, notes, source_video_id } = req.body;
+  const { source_video_id } = req.body;
+  const name = parseText(req.body.name, 'name');
+  const content = parseText(req.body.content, 'content');
+  const notes = parseText(req.body.notes, 'notes');
+  const kind = req.body.kind == null || req.body.kind === '' ? 'hook' : req.body.kind;
+  if (!['hook', 'format', 'style'].includes(kind)) throw httpError(400, '"kind" must be hook, format, or style.');
   if (!name || !content) return res.status(400).json({ error: 'Vault entries need a name and content.' });
   const info = db.prepare('INSERT INTO vault_entries (name, kind, content, notes, source_video_id) VALUES (?, ?, ?, ?, ?)')
-    .run(name, kind || 'hook', content, notes || null, source_video_id || null);
+    .run(name, kind, content, notes, source_video_id || null);
   res.json(db.prepare('SELECT * FROM vault_entries WHERE id = ?').get(info.lastInsertRowid));
 }));
 
 app.patch('/api/vault/:id', h(async (req, res) => {
   const e = db.prepare('SELECT * FROM vault_entries WHERE id = ?').get(req.params.id);
   if (!e) return res.status(404).json({ error: 'Vault entry not found' });
+  const name = req.body.name != null ? parseText(req.body.name, 'name', { required: true }) : e.name;
+  const content = req.body.content != null ? parseText(req.body.content, 'content', { required: true }) : e.content;
+  const notes = req.body.notes !== undefined ? parseText(req.body.notes, 'notes') : e.notes;
+  const kind = req.body.kind != null ? req.body.kind : e.kind;
+  if (!['hook', 'format', 'style'].includes(kind)) throw httpError(400, '"kind" must be hook, format, or style.');
   db.prepare('UPDATE vault_entries SET name = ?, kind = ?, content = ?, notes = ? WHERE id = ?')
-    .run(req.body.name ?? e.name, req.body.kind ?? e.kind, req.body.content ?? e.content, req.body.notes ?? e.notes, e.id);
+    .run(name, kind, content, notes, e.id);
   res.json(db.prepare('SELECT * FROM vault_entries WHERE id = ?').get(e.id));
 }));
 
@@ -491,10 +536,12 @@ app.get('/api/scripts/:id', h(async (req, res) => {
 }));
 
 app.post('/api/scripts', h(async (req, res) => {
-  const { title, idea, pillar } = req.body;
+  const { pillar } = req.body;
+  const title = parseText(req.body.title, 'title');
+  const idea = parseText(req.body.idea, 'idea');
   if (!title) return res.status(400).json({ error: 'Scripts need a title.' });
   parsePillar(pillar);
-  const info = db.prepare('INSERT INTO scripts (title, idea, pillar) VALUES (?, ?, ?)').run(title, idea || null, pillar || null);
+  const info = db.prepare('INSERT INTO scripts (title, idea, pillar) VALUES (?, ?, ?)').run(title, idea, pillar || null);
   res.json(db.prepare('SELECT * FROM scripts WHERE id = ?').get(info.lastInsertRowid));
 }));
 
@@ -597,17 +644,21 @@ app.get('/api/myvideos', h(async (req, res) => {
 }));
 
 app.post('/api/myvideos', h(async (req, res) => {
-  const { platform, url, title, posted_at, views, likes, comments, retention_pct, script_id, pillar, vault_entry_ids, notes } = req.body;
+  const { platform, posted_at, views, likes, comments, retention_pct, pillar, vault_entry_ids } = req.body;
+  const title = parseText(req.body.title, 'title');
+  const url = parseUrl(req.body.url);
+  const notes = parseText(req.body.notes, 'notes');
+  const script_id = parseScriptId(req.body.script_id);
   if (!title || views == null || views === '') return res.status(400).json({ error: 'Need at least a title and view count.' });
   const viewsNum = parseCount(views, 'views');
   if (viewsNum == null) return res.status(400).json({ error: 'Need at least a title and view count.' });
   parsePillar(pillar);
   const info = db.prepare(`INSERT INTO my_videos (platform, url, title, posted_at, views, likes, comments, retention_pct, script_id, pillar, vault_entry_ids, notes)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
-    platform || 'youtube', parseUrl(url), title, posted_at || null, viewsNum,
+    platform || 'youtube', url, title, posted_at || null, viewsNum,
     parseCount(likes, 'likes'), parseCount(comments, 'comments'),
     parseCount(retention_pct, 'retention_pct', { max: 100 }),
-    script_id || null, pillar || null, JSON.stringify(parseIdArray(vault_entry_ids, 'vault_entry_ids') || []), notes || null);
+    script_id, pillar || null, JSON.stringify(parseIdArray(vault_entry_ids, 'vault_entry_ids') || []), notes);
   res.json(db.prepare('SELECT * FROM my_videos WHERE id = ?').get(info.lastInsertRowid));
 }));
 
@@ -621,9 +672,11 @@ app.patch('/api/myvideos/:id', h(async (req, res) => {
   const comments = req.body.comments !== undefined ? parseCount(req.body.comments, 'comments') : m.comments;
   const retention = req.body.retention_pct !== undefined ? parseCount(req.body.retention_pct, 'retention_pct', { max: 100 }) : m.retention_pct;
   const pillar = req.body.pillar != null ? parsePillar(req.body.pillar, { required: true }) : m.pillar;
+  const title = req.body.title != null ? parseText(req.body.title, 'title', { required: true }) : m.title;
+  const notes = req.body.notes !== undefined ? parseText(req.body.notes, 'notes') : m.notes;
+  const scriptId = req.body.script_id !== undefined ? parseScriptId(req.body.script_id) : m.script_id;
   db.prepare(`UPDATE my_videos SET title = ?, views = ?, likes = ?, comments = ?, retention_pct = ?, pillar = ?, script_id = ?, notes = ?, stats_entered_at = datetime('now') WHERE id = ?`)
-    .run(req.body.title ?? m.title, views, likes, comments, retention, pillar,
-      req.body.script_id ?? m.script_id, req.body.notes ?? m.notes, m.id);
+    .run(title, views, likes, comments, retention, pillar, scriptId, notes, m.id);
   res.json(db.prepare('SELECT * FROM my_videos WHERE id = ?').get(m.id));
 }));
 
