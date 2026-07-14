@@ -67,3 +67,29 @@ conflict across sources are shown as conflicts, not resolved by preference.
   RIFT-DESK-HANDOFF.md §9) is a LEAD, not a fact, until independently re-verified.
 - Platform lockouts are recorded explicitly in the map ("what I couldn't see"), never
   papered over.
+
+## 5. Raised after review pass 1 (2026-07-14) — bars may only go UP
+
+A fresh adversarial reviewer attacked this standard and found exploitable holes. Each
+fix below RAISES a bar (permitted); nothing below relaxes anything above.
+
+1. **Scale evidence must be game-specific.** Channel-wide follower/viewer counts alone
+   do not establish "top creator for game X." They must be accompanied by evidence of
+   the game's share of the account's recent output (per-game streamed hours, a
+   dedicated channel, or explicit game-focused branding corroborated by others) — or
+   the account is a `[CANDIDATE]`, full stop.
+2. **"Different types" corroboration is enforced.** Two stats trackers are the same
+   type — and trackers are scale evidence, not corroboration. A corroborating source
+   must actually *name* the account as a notable creator **for this game**. Every ✔
+   must cite its sources; an uncited ✔ is a ✘.
+3. **CANDIDATEs may not hold ranked positions.** Rankings contain only accounts that
+   fully meet the standard; candidates live in a separate list with their exact
+   failure named. An empty "meets standard" list is an acceptable and honest outcome.
+4. **Full URLs, not domains.** Every claim cites the specific page URL. A claim with
+   only a domain is treated as `[UNVERIFIED]` until re-traced.
+5. **Discovery routes are documented** per platform (which searches/routes surfaced
+   which accounts), so the ≥3-routes rule is auditable.
+6. **Geographic/language scope must be declared.** For a game with a major
+   non-English market (Riftbound: China), the map either covers that market's
+   platforms or states plainly that its "top creator" claims are scoped to
+   Western/English platforms only.
