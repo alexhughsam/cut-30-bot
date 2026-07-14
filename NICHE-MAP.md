@@ -43,7 +43,9 @@ video's numbers by another route.
 | **Jul 24–26** | MTG | **Magic Spotlight: Marvel Super Heroes — Brussels** ($60K prize pool; main event Jul 25–26) | [magic.gg](https://magic.gg/news/assemble-for-magic-spotlight-marvel-super-heroes-in-las-vegas-and-brussels) + organizer [fanfinity](https://www.fanfinity.gg/event/magic-spotlight-series-brussels-2026/) (snippet) — HIGH (publisher + organizer agree, per §7.1) |
 | **Jul 25–26** | Lorcana | **China's first regional Championship — Shanghai Disneyland Hotel** (Challenge Season 2; winner qualifies for Worlds) | [lorcanaplayer tracker](https://lorcanaplayer.com/disney-lorcana-challenge-season-2-tracker/) + [Mushu Report](https://mushureport.com/china-announces-full-tournament-structure-road-to-worlds/) (snippet) — MED-HIGH |
 | Jul 24–26 **or 25–27 (CONFLICT)** | SWU | **Galactic Championship, Las Vegas (Venetian)** — biggest SWU event of the year, new-set meta debut | [official](https://galacticchampionship.starwarsunlimited.com/2026/home) says 24–26 vs [SWU Competitive Hub](https://www.swu-competitivehub.com/galactic-championship-july-25-27-the-venitian-resort-las-vegas/) says 25–27 (snippet) — HIGH it happens, day conflict flagged §7 |
-| **Jul 25** | One Piece | **Treasure Cup Peoria, IL (US)** | [Victory Road](https://tcg.victoryroad.pro/onepiece-2026-calendar/) + [TCGplayer](https://www.tcgplayer.com/content/article/Upcoming-Events-for-the-One-Piece-Card-Game-July-2026/7d1f4af0-4c21-4c16-959e-a1b97e9e2914/) (snippet) — MED-HIGH |
+| **Jul 25** | One Piece | **Treasure Cup Peoria, IL (US)** (Peoria Civic Center) | [Victory Road](https://tcg.victoryroad.pro/onepiece-2026-calendar/) + [Limitless #430](https://onepiece.limitlesstcg.com/tournaments/430) (snippet) — MED-HIGH |
+| **Jul 25–26** | One Piece | **Regional Championships Sofia (BG, Sofia Tech Park, 512 players) + Puebla (MX, Centro Expositor)** — same flagship circuit as Wolverhampton/São Paulo; Treasure Cups Sofia + Mérida run Jul 26 alongside | [official Regionals page](https://en.onepiece-cardgame.com/events/regional-season1-26-27.html) + [Victory Road](https://tcg.victoryroad.pro/onepiece-2026-calendar/) + [Weezevent Sofia](https://my.weezevent.com/one-piece-sofia-2026) (snippet; added by review pass 5, reviewer-verified) — HIGH |
+| **Jul 18–19** | Yu-Gi-Oh | **OCG Japan Championship 2026 individual finals** — TRC Tokyo Ryutsu Center; top 5 become Japan's Worlds 2026 representatives; the window's biggest YGO meta-reveal moment (Jump Victory Carnival Tokyo Jul 19 / Osaka Jul 25 are promo-tier alongside) | [yugioh-card.com/japan](https://www.yugioh-card.com/japan/event/jcs/2026/individual/) (snippet; added by review pass 5, reviewer-verified) — HIGH |
 | ~~Jul 26~~ | Riftbound | ~~MSI Daejeon presence~~ — **PHANTOM, removed by review pass 3**: MSI 2026 ran Jun 28–Jul 12 ([Wikipedia](https://en.wikipedia.org/wiki/2026_Mid-Season_Invitational), [Liquipedia](https://liquipedia.net/leagueoflegends/Mid-Season_Invitational/2026)); Riftbound's booth was the Fan Fest demo Jul 3–12 ([Inven Global](https://x.com/InvenGlobal/status/2070328361193263309)). Riot's stale "Upcoming Official Events" promo page listed it — source-vs-organizer conflict, organizer wins | past event — do not ride |
 | ~~Jul 26–28~~ | Riftbound | ~~EVO USA 2026~~ — **PHANTOM, removed by review pass 3**: Evo 2026 ran Jun 26–28, results published ([evo.gg](https://evo.gg/events/evo2026/), [EventHubs results](https://www.eventhubs.com/news/2026/jun/26/evo-2026-results/)). Same stale promo-page source | past event — do not ride |
 | Mid-Jul | Riftbound | China's Unleashed Major, northern China — exact dates `[UNVERIFIED]`; Parthenay (France) roadmap stop ~mid-July `[UNVERIFIED]` | roadmap via [bleedingcool](https://bleedingcool.com/games/teamfight-tactics-and-riftbound-culminate-at-convergence-fest/) (snippet) |
@@ -87,8 +89,8 @@ video's numbers by another route.
 (game-specific scale + ≥2 different-type corroborations naming them for Riftbound);
 everyone else is a listed CANDIDATE with the exact failure named. All metrics
 snippet-grade, 2026-07-14. Discovery routes per platform are listed at the end of this
-section. No ranked Riftbound creator leaderboard exists anywhere except Twitch
-trackers (HIGH).*
+section. No ranked Riftbound creator leaderboard was found anywhere except Twitch
+trackers (MED — universal negative on snippet evidence, per §8.3).*
 
 **Meets the standard: NO ACCOUNT, on any platform.** Review pass 2 examined the two
 entries previously listed here and both failed the raised corroboration rule (§6.1):
@@ -258,5 +260,22 @@ bar computable. Flagging once, per the budget rule.
   "no leaderboard" universal negative to MED. Standard raised (§8.1–8.3): index sweep
   extends to every covered game, every named game carries the completeness
   obligation, universal negatives cap at MED on snippets.
-- **Review pass 5 (FINAL — cap):** pending. Per the loop rule, whatever pass 5 finds,
-  the operator sees the survivor plus the last standing objection and makes the call.
+- **Review pass 5 (FINAL — cap reached): FAIL, narrow.** The Riftbound spine and all
+  four pass-4 additions "survive attack" and verified cleanly (Brussels, Yokohama,
+  Shanghai, SWU reconciliation); the creator list remains justified ("no creator
+  claim found standing above its evidence"); tags and conflict flags ruled honest.
+  Gaps: two missing One Piece Regionals (Sofia + Puebla, Jul 25–26) and Yu-Gi-Oh's
+  Japan Championship finals (Jul 18–19) — all three folded in above using the
+  reviewer's own organizer-grade URLs (reviewer-verified, satisfying §7.3), plus the
+  leftover HIGH tag fixed.
+- **THE LAST STANDING OBJECTION (shown verbatim per the loop rule — the operator
+  calls it):** pass 5's un-closable methodology objection is: *"§3/§8.1 have no
+  event-tier floor… 'No event inside the next 14 days may be missing' is either
+  absurd (every LGS event) or silently tiered — and the map tiers inconsistently"*
+  and *"§8.1 requires a sweep but no sweep receipt… a partial sweep is
+  indistinguishable from a full one."* In plain terms: the named events are now in,
+  but the process cannot PROVE the adjacent-game calendar is complete — future
+  refreshes need per-game sweep logs (URL + date + row count) and an explicit tier
+  floor ("every event on the publisher's own OP calendar page"). These are adopted
+  as requirements for the next map refresh; the Riftbound core is script-safe today
+  per two consecutive reviewers.

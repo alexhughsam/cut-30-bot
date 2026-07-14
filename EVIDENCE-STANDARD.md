@@ -141,3 +141,14 @@ fix below RAISES a bar (permitted); nothing below relaxes anything above.
    subject to §3 — no credit for coverage that can't fail.
 3. **Universal negatives cap at MED on snippet evidence.** "No X exists anywhere"
    cannot be HIGH-confidence while any relevant directory remains unread.
+
+## 9. Raised after review pass 5 (2026-07-14, loop cap) — for the NEXT refresh
+
+1. **Event-tier floor defined:** window completeness means every event on the
+   publisher's own organized-play calendar page for each covered game — objective
+   and auditable, no silent tiering.
+2. **Sweep receipts:** each refresh logs, per game, the calendar URL swept, the
+   retrieval date, and the row count found — so a partial sweep is distinguishable
+   from a full one.
+3. **The completeness obligation is sticky:** a game covered in any prior revision
+   keeps its window obligation unless its removal is justified in the review log.
