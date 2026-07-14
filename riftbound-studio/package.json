@@ -1,0 +1,19 @@
+{
+  "name": "riftbound-studio",
+  "version": "1.0.0",
+  "description": "Content-creation studio for TCG short-form creators: research what's winning, understand why, script from evidence, measure yourself against your own baseline.",
+  "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "test": "node --test \"server/tests/*.test.js\""
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.111.0",
+    "better-sqlite3": "^11.7.0",
+    "express": "^4.21.2"
+  }
+}

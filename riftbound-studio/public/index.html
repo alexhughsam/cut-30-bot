@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Riftbound Studio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>Riftbound Studio</h1>
+      <span class="tagline">research → why it won → script → post → measure → repeat</span>
+    </div>
+    <div class="header-right">
+      <span id="niche-label" class="niche-chip"></span>
+      <a href="/api/export" class="btn ghost" download>Export data</a>
+    </div>
+  </header>
+
+  <div id="integration-banner"></div>
+
+  <nav id="tabs">
+    <button data-tab="research" class="active">Research</button>
+    <button data-tab="vault">Vault</button>
+    <button data-tab="scripts">Scripts</button>
+    <button data-tab="mine">My Videos</button>
+  </nav>
+
+  <main id="view"></main>
+
+  <div id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
