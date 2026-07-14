@@ -115,3 +115,17 @@ fix below RAISES a bar (permitted); nothing below relaxes anything above.
 5. **Calendar scope must be declared** separately from creator scope. If the calendar
    is global in practice, it is global in obligation — regional launches (e.g. Korea)
    inside the window may not be missing.
+
+## 7. Raised after review pass 3 (2026-07-14) — bars may only go UP
+
+1. **Third-party events require the organizer's own dates.** For any event the
+   publisher merely appears at (MSI, EVO, SDCC, Gen Con, PAX), the event organizer's
+   own calendar is a mandatory second source. An event sourced only from a publisher
+   promo page is capped at MED confidence and must be flagged as un-cross-checked.
+2. **"Upcoming" framing must be validated against today's date.** A snippet of a
+   promo page cannot reveal its publish date; any "upcoming events" page is treated
+   as potentially stale until each entry is checked against the present.
+3. **Review-pass additions face the same verification as original claims.** Anything
+   a gap-closing pass adds to the deliverable must be spot-checked with the same
+   rigor as first-draft claims before the next review; a reviewer's instruction is a
+   lead, not a fact.

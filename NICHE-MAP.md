@@ -39,10 +39,10 @@ video's numbers by another route.
 | **Jul 24–30** | Riftbound | **Vendetta Pre-Rift (prerelease) at LGS worldwide** — sealed: 15-card mini-deck + 5 boosters + promo; first hands-on-cards window | [ICv2 62570](https://icv2.com/articles/sponsored/view/62570/sponsored-riftbounds-vendetta-arrives-july-31-new-champions-new-products-organized-play-support) + [UVS locator example](https://locator.riftbound.uvsgames.com/events/533931) (snippet) — HIGH |
 | Jul 24 | Lorcana | Attack of the Vine! full release (Set 13, 207 cards) | [disneylorcana.com](https://www.disneylorcana.com/en-US/news/2026/06/attack-of-the-vine-press-release) (snippet) — HIGH |
 | Jul 24 | Gundam | GD05 Freedom Ascension (1st-anniversary set) | [gundam-gcg.com](https://www.gundam-gcg.com/en/products/gd05.html) (snippet) — HIGH |
-| Jul 24–26 | SWU | **Galactic Championship, Las Vegas** — biggest SWU event of the year, new-set meta debut | [official](https://galacticchampionship.starwarsunlimited.com/2026/home) (snippet) — HIGH |
+| Jul 24–26 **or 25–27 (CONFLICT)** | SWU | **Galactic Championship, Las Vegas (Venetian)** — biggest SWU event of the year, new-set meta debut | [official](https://galacticchampionship.starwarsunlimited.com/2026/home) says 24–26 vs [SWU Competitive Hub](https://www.swu-competitivehub.com/galactic-championship-july-25-27-the-venitian-resort-las-vegas/) says 25–27 (snippet) — HIGH it happens, day conflict flagged §7 |
 | **Jul 25** | One Piece | **Treasure Cup Peoria, IL (US)** | [Victory Road](https://tcg.victoryroad.pro/onepiece-2026-calendar/) + [TCGplayer](https://www.tcgplayer.com/content/article/Upcoming-Events-for-the-One-Piece-Card-Game-July-2026/7d1f4af0-4c21-4c16-959e-a1b97e9e2914/) (snippet) — MED-HIGH |
-| **Jul 26** | Riftbound | **Riftbound presence at League of Legends MSI, Daejeon (KR)** | [official events page](https://playriftbound.com/en-us/news/announcements/riftbounds-upcoming-official-events/) (snippet) — HIGH |
-| **Jul 26–28** | Riftbound | **Riftbound at EVO USA 2026 (Las Vegas)** | [official events page](https://playriftbound.com/en-us/news/announcements/riftbounds-upcoming-official-events/) (snippet) — HIGH |
+| ~~Jul 26~~ | Riftbound | ~~MSI Daejeon presence~~ — **PHANTOM, removed by review pass 3**: MSI 2026 ran Jun 28–Jul 12 ([Wikipedia](https://en.wikipedia.org/wiki/2026_Mid-Season_Invitational), [Liquipedia](https://liquipedia.net/leagueoflegends/Mid-Season_Invitational/2026)); Riftbound's booth was the Fan Fest demo Jul 3–12 ([Inven Global](https://x.com/InvenGlobal/status/2070328361193263309)). Riot's stale "Upcoming Official Events" promo page listed it — source-vs-organizer conflict, organizer wins | past event — do not ride |
+| ~~Jul 26–28~~ | Riftbound | ~~EVO USA 2026~~ — **PHANTOM, removed by review pass 3**: Evo 2026 ran Jun 26–28, results published ([evo.gg](https://evo.gg/events/evo2026/), [EventHubs results](https://www.eventhubs.com/news/2026/jun/26/evo-2026-results/)). Same stale promo-page source | past event — do not ride |
 | Mid-Jul | Riftbound | China's Unleashed Major, northern China — exact dates `[UNVERIFIED]`; Parthenay (France) roadmap stop ~mid-July `[UNVERIFIED]` | roadmap via [bleedingcool](https://bleedingcool.com/games/teamfight-tactics-and-riftbound-culminate-at-convergence-fest/) (snippet) |
 
 ## 2. THE REST OF THE 60 DAYS (Jul 29 – Sep 12)
@@ -162,6 +162,8 @@ short-form; saturation checked against Riftbound-specific searches.*
 7. Whatnot GMV: ~$8B (2024) vs $6B forecast (2025) — different years/methods.
 8. JohnPanio: 1.2M followers vs "not active in last 30 days" vs Jul 10 Riftbound VOD.
 9. LotharHS viewership: tracker "avg 555" vs self-reported 200–400 concurrents.
+10. SWU Galactic Championship: Jul 24–26 (official site) vs Jul 25–27 Venetian (SWU Competitive Hub).
+11. Riot's "Upcoming Official Events" promo page vs organizers' own calendars: the promo page listed MSI and EVO appearances that organizer dates show already ended (see §1 phantom rows) — treat that page as MED-grade until cross-checked, per standard §7.
 
 ## 8. WHAT WE COULDN'T SEE (lockout transparency, per the standard)
 
@@ -225,4 +227,16 @@ bar computable. Flagging once, per the budget rule.
   machine records, mis-cited = ✘), verified-standing must be shown alongside
   top-by-audience, ≥1 non-snippet/official source per ranked entry, publisher events
   index must be swept, calendar scope declared.
-- **Review pass 3:** pending.
+- **Review pass 3 (third fresh reviewer, blind to passes 1–2): FAIL.** Two real gaps,
+  both **introduced by review pass 2's own gap-closing**: the "Riftbound at MSI
+  Daejeon Jul 26" and "EVO USA Jul 26–28" rows were phantoms — Riot's "Upcoming
+  Official Events" promo page was stale; MSI ran Jun 28–Jul 12 (Riftbound booth =
+  Fan Fest demo Jul 3–12) and Evo ran Jun 26–28. Reviewer confirmed the rest of the
+  window ("compliance on A is otherwise solid; the failure is factual") and ruled the
+  empty creator list "justified, not nihilism." Closed in this revision: both phantom
+  rows struck (kept visibly as warnings), SWU Galactic Championship day conflict
+  flagged (24–26 vs 25–27), conflict #11 added for the stale promo page. Standard
+  raised (§7.1–7.3): organizer's own dates mandatory for third-party events,
+  "upcoming" pages presumed stale until validated, review-pass additions face the
+  same verification as original claims.
+- **Review pass 4:** pending. (Two consecutive clean passes required; cap is 5.)
