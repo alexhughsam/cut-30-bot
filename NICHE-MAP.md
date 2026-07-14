@@ -4,11 +4,12 @@
 post-review raises). Freshness bar: no event inside the next 14 days missing; refresh
 before any script rides an event. Review log: §9.*
 
-**Scope declaration (per standard §5.6):** this map's creator claims are scoped to
-**Western/English-language platforms only** (YouTube, Twitch, TikTok, X, Instagram).
-Riftbound's largest market is plausibly China (Vendetta is the first simultaneous
-EN+CN release) and **no Bilibili/Douyin/Weibo discovery was attempted** — the CN
-creator hierarchy is a declared blind spot, not a certified absence.
+**Scope declaration (per standard §5.6 and §6.5):** this map's **creator claims** are
+scoped to **Western/English-language platforms only** (YouTube, Twitch, TikTok, X,
+Instagram). Riftbound's largest market is plausibly China (Vendetta is the first
+simultaneous EN+CN release) and **no Bilibili/Douyin/Weibo discovery was attempted** —
+the CN creator hierarchy is a declared blind spot, not a certified absence. The
+**calendar** is scoped **globally** (it includes CN, KR, EU, APAC events).
 
 **Evidence grade cap:** the research environment's egress proxy policy-blocked every
 direct platform page and stats tracker (§8). All metrics are **search-snippet grade
@@ -25,12 +26,14 @@ video's numbers by another route.
 |---|---|---|---|
 | **NOW → Jul 17** | Riftbound | **Vendetta preview season** — daily partner card reveals (Dev Drop Jul 6, 6pm PT) | [playriftbound.com](https://playriftbound.com/en-us/news/announcements/vendetta-preview-season/) + [SCG schedule](https://articles.starcitygames.com/riftbound/full-schedule-of-previews-for-riftbound-vendetta-revealed/) (snippet) — HIGH |
 | **Jul 16, 6pm PT** | Riftbound | **Full ban list + rules update announcement** (beyond pre-announced Stealthy Pursuer). Biggest reaction moment of the fortnight — speed beats polish | [riftbound.gg](https://riftbound.gg/stealthy-pursuer-banned-full-ban-announcement-to-come-july-16-2026/) + [SCG](https://articles.starcitygames.com/riftbound/riftbound-announces-surprise-ban-to-address-new-infinite-combo-in-vendetta/) + [Escapist](https://www.escapistmagazine.com/news-riftbound-announces-a-proactive-ban-ahead-of-set-4-with-more-ban-updates-on-the-way/) (snippet) — HIGH |
-| Jul 17 | Pokémon | Mega Evolution—Pitch Black releases (Mega Darkrai ex chase) | [pokemon.com](https://www.pokemon.com/us/pokemon-news/the-pokemon-tcg-mega-evolution-pitch-black-expansion-arrives-july-17-2026) (snippet) — HIGH |
+| Jul 16 | Pokémon | Mega Evolution—Pitch Black releases **digitally on Pokémon TCG Live** (day before paper) | [pokemon.com July products](https://www.pokemon.com/us/news/check-out-every-pokemon-tcg-product-release-in-july-2026) (snippet) — MED |
+| Jul 17 | Pokémon | Mega Evolution—Pitch Black paper release (Mega Darkrai ex chase) | [pokemon.com](https://www.pokemon.com/us/pokemon-news/the-pokemon-tcg-mega-evolution-pitch-black-expansion-arrives-july-17-2026) (snippet) — HIGH |
 | Jul 17–19 | MTG | **MagicCon Amsterdam + Pro Tour Marvel Super Heroes.** Preview panels: **Reality Fracture Jul 17, The Hobbit debut Jul 18**; three new-set announcements expected over the weekend | [magic.gg](https://magic.gg/news/the-pro-tour-and-magic-spotlight-series-in-2026) + [SCG panels](https://articles.starcitygames.com/magic-the-gathering/magiccon-amsterdam-preview-panels-announced/) (snippet) — HIGH; three-sets item MED ([mtgrocks](https://mtgrocks.com/mtg-reality-fracture/)) |
 | Jul 17 | Lorcana | Attack of the Vine! prerelease (game stores + select Disney parks/stores) + $99.99 Disney-store-only Curator's Collection Heroines Edition (scarcity story) | [disneylorcana.com](https://www.disneylorcana.com/en-US/news/2026/06/attack-of-the-vine-press-release) (snippet) — HIGH / [cultureslate](https://www.cultureslate.com/news/disney-lorcana-reprints-are-meant-to-address-scarcity) MED |
 | **Jul 11 or 17 (CONFLICT)** | SWU | Set 8 Ashes of the Empire wide release — **Jul 11 is the better-supported date** ([skillshotzgaming set guide](https://skillshotzgaming.com/star-wars-unlimited-ashes-of-the-empire/)) vs Jul 17 ([screenrant](https://screenrant.com/star-wars-ashes-of-empire-july-2026/), cbr, opencritic); if Jul 11 is right, the set is already out. Official page not consulted (unfetched, not blocked — a gap now logged in §8) | conflict UNRESOLVED — do not ride without re-verifying |
-| **Jul 19** | One Piece | **Treasure Cup Wolverhampton (UK) + Treasure Cup São Paulo (BR)** — flagship competitive circuit feeding Worlds | [Victory Road calendar](https://tcg.victoryroad.pro/onepiece-2026-calendar/) + [TCGplayer July events](https://www.tcgplayer.com/content/article/Upcoming-Events-for-the-One-Piece-Card-Game-July-2026/7d1f4af0-4c21-4c16-959e-a1b97e9e2914/) (snippet) — MED-HIGH |
-| ~Jul 11–22 | Riftbound | July Summoner Skirmish store events (window boundaries conflict: one snippet says "begins Jul 22," stores list Jul 15/18 events) | store pages (snippet) — MED, conflict flagged §7 |
+| **Jul 18(–19)** | One Piece | **Regional Championships Wolverhampton (UK, 1,024 players) + São Paulo (BR)** — the flagship circuit feeding Worlds | [organizedplay.events #170](https://tickets.organizedplay.events/Event/Index/170) + [Limitless](https://onepiece.limitlesstcg.com/tournaments/433) + [official Regionals page](https://en.onepiece-cardgame.com/events/regional-season1-26-27.html) (snippet) — HIGH |
+| Jul 19 | One Piece | Treasure Cup Wolverhampton + Treasure Cup São Paulo — **companion/side events** to the Jul 18 Regionals | [Victory Road calendar](https://tcg.victoryroad.pro/onepiece-2026-calendar/) + [TCGplayer July events](https://www.tcgplayer.com/content/article/Upcoming-Events-for-the-One-Piece-Card-Game-July-2026/7d1f4af0-4c21-4c16-959e-a1b97e9e2914/) (snippet) — MED-HIGH |
+| ~Jul 11–22 | Riftbound | July Summoner Skirmish store events (window conflict: [official events page](https://playriftbound.com/en-us/news/announcements/riftbounds-upcoming-official-events/) says "begins Jul 22," stores list Jul 4–18 events) | official events page + store pages (snippet) — MED, conflict flagged §7 |
 | **Jul 23–26** | Riftbound | **San Diego Comic-Con presence** — official roadmap booth stop + a listed Vendetta Pre-Rift at Bards & Cards tied to SDCC | [bleedingcool roadmap](https://bleedingcool.com/games/teamfight-tactics-and-riftbound-culminate-at-convergence-fest/) + [sdccblog](https://sdccblog.com/events-default/riftbound-vendetta-pre-rift-event-at-bards-cards/) (snippet) — MED-HIGH |
 | Jul 24 | Riftbound | **Stealthy Pursuer ban effective** (kills the Stealthy Pursuer + Eye of the Herald + Renata Glasc infinite enabled by Vendetta's Chaos+Order pairing; Guskin: team "isn't opposed to infinite combos by default") | [SCG](https://articles.starcitygames.com/riftbound/riftbound-announces-surprise-ban-to-address-new-infinite-combo-in-vendetta/) + [Guskin on X](https://x.com/davetron/status/2074533556706226295) (snippet) — HIGH |
 | **Jul 24–30** | Riftbound | **Vendetta Pre-Rift (prerelease) at LGS worldwide** — sealed: 15-card mini-deck + 5 boosters + promo; first hands-on-cards window | [ICv2 62570](https://icv2.com/articles/sponsored/view/62570/sponsored-riftbounds-vendetta-arrives-july-31-new-champions-new-products-organized-play-support) + [UVS locator example](https://locator.riftbound.uvsgames.com/events/533931) (snippet) — HIGH |
@@ -38,6 +41,8 @@ video's numbers by another route.
 | Jul 24 | Gundam | GD05 Freedom Ascension (1st-anniversary set) | [gundam-gcg.com](https://www.gundam-gcg.com/en/products/gd05.html) (snippet) — HIGH |
 | Jul 24–26 | SWU | **Galactic Championship, Las Vegas** — biggest SWU event of the year, new-set meta debut | [official](https://galacticchampionship.starwarsunlimited.com/2026/home) (snippet) — HIGH |
 | **Jul 25** | One Piece | **Treasure Cup Peoria, IL (US)** | [Victory Road](https://tcg.victoryroad.pro/onepiece-2026-calendar/) + [TCGplayer](https://www.tcgplayer.com/content/article/Upcoming-Events-for-the-One-Piece-Card-Game-July-2026/7d1f4af0-4c21-4c16-959e-a1b97e9e2914/) (snippet) — MED-HIGH |
+| **Jul 26** | Riftbound | **Riftbound presence at League of Legends MSI, Daejeon (KR)** | [official events page](https://playriftbound.com/en-us/news/announcements/riftbounds-upcoming-official-events/) (snippet) — HIGH |
+| **Jul 26–28** | Riftbound | **Riftbound at EVO USA 2026 (Las Vegas)** | [official events page](https://playriftbound.com/en-us/news/announcements/riftbounds-upcoming-official-events/) (snippet) — HIGH |
 | Mid-Jul | Riftbound | China's Unleashed Major, northern China — exact dates `[UNVERIFIED]`; Parthenay (France) roadmap stop ~mid-July `[UNVERIFIED]` | roadmap via [bleedingcool](https://bleedingcool.com/games/teamfight-tactics-and-riftbound-culminate-at-convergence-fest/) (snippet) |
 
 ## 2. THE REST OF THE 60 DAYS (Jul 29 – Sep 12)
@@ -48,6 +53,7 @@ video's numbers by another route.
 - **Aug 21–23 — RQ Barcelona**, Fira de Barcelona — first RQ of the Vendetta season, top 64 qualify ([Eventbrite](https://www.eventbrite.com/e/riftbound-regional-qualifier-barcelona-tickets-1992319038877) — HIGH). **Sep 4–6 — RQ Singapore**, Singapore EXPO ([Eventbrite](https://www.eventbrite.com/e/riftbound-regional-qualifier-singapore-tickets-1992780327604) — HIGH). RQ Los Angeles Sep 25–27 just outside window (MED).
 - Showdown Series (sanctioned third-party): Gatineau Aug 8, Auckland + Speyer Aug 15, Milwaukee Aug 22 — all `[UNVERIFIED — single aggregated summary]`.
 - Aug 29–Sep 1 — Riftbound demos at Seattle Asmodee event (probably PAX West — venue name `[UNVERIFIED]`).
+- **September — "Korea Enters the Rift": Korean-language Origins launches** (exact date `[UNVERIFIED]`) — a whole new language market opening inside the window ([official announcement](https://playriftbound.com/en-us/news/announcements/korea-enters-the-rift/) — HIGH that it's September, snippet).
 - Ongoing: **Nexus Nights** weekly LGS play ([uvsgames.com](https://uvsgames.com/news/battle-you-on-the-rift-introduction-to-riftbound-organized-play/)); **Le Rift Tour** France, 16 LGS → finals at Paris Games Week Oct 22–25 ([Bienvenue France](https://riftbound.leagueoflegends.com/en-us/news/announcements/bienvenue-france/)).
 - Planning horizon: Radiance previews Sep 28–Oct 9, release Oct 23, Ekko/Seraphine/Evelynn (MED); NA Regional Championship at Convergence Fest, Las Vegas Dec 11–13, $50K ([TFT announcement](https://teamfighttactics.leagueoflegends.com/en-us/news/announcements/celebrate-tft-and-riftbound-at-convergence-fest/) — HIGH; "first vs second NA RC" conflict §7); first Worlds 2027 (HIGH).
 
@@ -81,12 +87,20 @@ snippet-grade, 2026-07-14. Discovery routes per platform are listed at the end o
 section. No ranked Riftbound creator leaderboard exists anywhere except Twitch
 trackers (HIGH).*
 
-**Meets the standard:**
-
-1. **LotharHS** (Twitch ~297K / X ~33.3K / YT / riftmeta.net) — (a) scale: [streamscharts](https://streamscharts.com/channels/lotharhs) ~297K followers, avg 555 viewers last 30d — **conflict flag: his own X post self-reports 200–400 concurrents** ([X](https://x.com/LotharHS/status/2051635106557673480)); channel-wide count, but current output is Riftbound-branded. (b) different-type corroborations naming him for Riftbound: **DRX signing as Riftbound analyst** (org endorsement, [X bio](https://x.com/lotharhs)), riftbound.gg hosting his decks (meta-site), [followercharts top-3 Riftbound](https://www.followercharts.com/games/twitch/riftbound) (tracker — counts toward discovery, not corroboration). Formats: meta analysis, tier lists ([riftmeta.net](https://riftmeta.net/)), play-by-play.
-2. **AliEldrazi** (Twitch ~54K / X 16.8K / dedicated Riftbound YT) — (a) scale: [streamscharts](https://streamscharts.com/channels/alieldrazi) ~54K followers, avg 38 viewers; YT "AliEldrazi Riftbound" 11K subs `[figure uncertain — snippet may describe his main channel]`; game-specific: a **dedicated Riftbound channel** + declared MWF Riftbound cadence ([his X post](https://x.com/AliEldrazi/status/2005689171684569276)). (b) riftdecks.com deck feature (meta-site), topdeck.gg $10K event (tournament coverage), [Metafy](https://metafy.gg/@emoetional) ecosystem listing, sponsorships (CoolStuffInc, UntappedGG). Differentiator: 20+ MTG Pro Tours pedigree.
+**Meets the standard: NO ACCOUNT, on any platform.** Review pass 2 examined the two
+entries previously listed here and both failed the raised corroboration rule (§6.1):
+every citation was self-sourced, machine-generated, or mis-cited. Per §5.3, an empty
+list is the honest outcome. The strongest un-walked corroboration route is Riot's
+official **[2026 Creator Activations program](https://playriftbound.com/en-us/news/announcements/2026-creator-activations/)**
+(preview-partner continuity, creator badges at RQs, a Creator Discord, "creators
+who've established themselves as authorities on Riftbound") — mining its partner
+roster is the fastest way to promote candidates legitimately, and it was missed in
+discovery (now logged).
 
 **Candidates (standard not fully met — exact failure named; may NOT anchor a REMIX):**
+
+- **LotharHS** (Twitch ~297K / X ~33.3K / YT @LotharHSRiftbound / riftmeta.net) — the closest to qualifying. (a) scale: [streamscharts](https://streamscharts.com/channels/lotharhs) ~297K followers, avg 555 viewers/30d — **conflict: his own X post self-reports 200–400 concurrents** ([X](https://x.com/LotharHS/status/2051635106557673480)); count is channel-wide, output is Riftbound-branded. FAILS §6.1: the "DRX Riftbound analyst" corroboration was **self-sourced (his bio) and misdescribed** — [Liquipedia](https://liquipedia.net/valorant/Lothar) (independent wiki, a valid naming act) describes him as a DRX **streamer** and **VCT VALORANT broadcast analyst** who is also a Riftbound content creator; riftbound.gg hosting his decks is passive ecosystem presence, not naming. Valid corroborations found so far: one (Liquipedia). Needs one more.
+- **AliEldrazi** (Twitch ~54K, avg 38 viewers — [streamscharts](https://streamscharts.com/channels/alieldrazi) / X 16.8K / dedicated Riftbound YT, 11K `[figure uncertain]`) — genuinely Riftbound-dedicated (declared MWF cadence, [his X post](https://x.com/AliEldrazi/status/2005689171684569276) — self-sourced, fine for cadence, not corroboration). FAILS §6.1: prior Metafy citation was a **wrong URL** (pointed to eMOEtional; his is [metafy.gg/@alieldrazi/shop](https://metafy.gg/@alieldrazi/shop)); the [topdeck.gg item](https://topdeck.gg/deck/saturday-10000-riftbound-leage-of-legends-tcg-tournament/KlQkTkILKgWzjUunxxMtxMLY9Y62) is a participation decklist, not naming; riftdecks feature same defect; sponsorships self-reported. Valid corroborations: zero pinned. 20+ MTG Pro Tours pedigree real but not Riftbound-naming.
 
 - **imls** (Twitch 642K, avg 1,121 viewers/30d — [twitchtracker](https://twitchtracker.com/imls), [twitchstats](https://twitchstats.net/streamer/imls)) — FAILS §5.1: scale is channel-wide and **LoL-dominated** (SullyGnome: most-streamed game last 30d is League of Legends; "mainly streams League of Legends but sometimes streams Riftbound" — [sullygnome](https://sullygnome.com/channel/imls)); FAILS §5.2: corroborations are two stats trackers (same type, and trackers ≠ corroboration). Still likely the biggest single audience that regularly sees Riftbound streams.
 - **Tolarian Community College** (YT 1M subs, [milestone video](https://www.youtube.com/watch?v=BldZtCD6vw4)) — FAILS §5.2 for Riftbound specifically: no third party found naming it a notable *Riftbound* creator; audience built on MTG. Its ["How To Play Riftbound"](https://www.youtube.com/watch?v=sPvBt2mroDY) showed 70.9K views (~Nov 2025) `[UNVERIFIED as overperformer — no median]`.
@@ -99,11 +113,15 @@ trackers (HIGH).*
 - **jfwong** (TikTok 52.8K, avg ~29K views/video — [urlebird](https://urlebird.com/user/jfwong/); hosted Riot's /ALLChat — [self-sourced X post](https://x.com/jfwong/status/1992259864492667015)) — FAILS §5.2: corroboration one-source/self-sourced. **The only account anywhere in this map with a usable per-video baseline.**
 - Also discovered, insufficient data to classify: CovertGoBlue (official Origins reveal partner — [X](https://x.com/covertgoblue/status/1935741364832211008)), Silent Knight (official Vendetta spoiler partner — [YT](https://www.youtube.com/watch?v=rsm2eRkEpoc)), RUNEBOYS (ES), Runes & Rift, Riftlab, DUNC, @kzcollectibles (TikTok), LotharHS Riftbound (YT).
 
-**Platform verdicts:** Twitch has the clearest hierarchy; YouTube: **no account fully
-meets the standard** — the honest result, not a ranking; TikTok: effectively unclaimed
-by any verifiable Riftbound-native creator; Instagram: no independent creator
-verifiable — official @playriftbound (52K) dominates; X: LotharHS and Riftbound Report
-lead what's visible.
+**Platform verdicts (per §6.2, both dimensions shown):** *By documentable
+Riftbound-standing*, LotharHS and AliEldrazi lead but neither yet clears the raised
+bar. *By raw audience regularly seeing Riftbound content*, the biggest accounts are
+imls (642K, LoL-dominant) and JohnPanio (1.2M, variety) — larger than every
+Riftbound-native account, and neither is a Riftbound creator in the standing sense.
+Neither list alone answers "top creator"; read them together. YouTube: no account
+fully meets the standard; TikTok: effectively unclaimed by any verifiable
+Riftbound-native creator; Instagram: official @playriftbound (52K) dominates; X:
+LotharHS and Riftbound Report lead what's visible.
 
 **Discovery routes used (per standard §5.5):** YouTube — YT search snippets, community
 references, aggregator mentions, preview-partner coverage. Twitch — tracker sites
@@ -112,7 +130,10 @@ directory search results, creator cross-references. X — profile snippets, mirr
 (piclur, instalker), press references. TikTok — discover-page snippets, creator
 cross-refs, urlebird mirror. Instagram — IG search snippets, linktree, official news.
 (48+ queries total; every discovered account is listed above or in the "also
-discovered" line — none withheld.)
+discovered" line — none withheld.) **Route missed in passes 1–2, now logged:** Riot's
+official creator-program pages ([2026 Creator Activations](https://playriftbound.com/en-us/news/announcements/2026-creator-activations/))
+— the single most authoritative corroboration source; not yet mined (page body 403,
+roster extraction pending).
 
 ## 6. FORMAT RAID MAP (from the wider TCG creator economy)
 
@@ -188,4 +209,20 @@ bar computable. Flagging once, per the budget rule.
   viewer conflict + OP-17 Aug 26/JP Aug 22 updated. Standard raised (§5.1–5.6):
   game-specific scale, enforced different-type corroboration, no CANDIDATEs in
   rankings, full-URL rule, documented discovery routes, declared geographic scope.
-- **Review pass 2:** pending.
+- **Review pass 2 (second fresh reviewer, blind to pass 1): FAIL.** Six gaps + six
+  standard attacks. Spot-checks confirmed the core Riftbound spine (Jul 16
+  announcement, Jul 24 ban + Pre-Rift, Jul 31 release, SDCC) as "accurate and
+  script-safe." Gaps closed in this revision: Riftbound at MSI Daejeon Jul 26 + EVO
+  USA Jul 26–28 added (from Riot's own events page, missed in pass 1); **the
+  "Meets the standard" creator list emptied** — LotharHS demoted (DRX corroboration
+  was self-sourced and misdescribed; Liquipedia says DRX streamer / VCT VALORANT
+  analyst) and AliEldrazi demoted (Metafy citation was a wrong URL; topdeck item is a
+  participation record, not naming); Riot's 2026 Creator Activations program logged
+  as the missed discovery route; One Piece Jul 18 Regionals added and Treasure Cups
+  reframed as side events; Korea Origins launch (September) added; Pokémon TCG Live
+  Jul 16 digital release added; calendar scope declared global. Standard raised
+  (§6.1–6.5): "naming" defined (editorial/community acts only, no self-sourcing, no
+  machine records, mis-cited = ✘), verified-standing must be shown alongside
+  top-by-audience, ≥1 non-snippet/official source per ranked entry, publisher events
+  index must be swept, calendar scope declared.
+- **Review pass 3:** pending.

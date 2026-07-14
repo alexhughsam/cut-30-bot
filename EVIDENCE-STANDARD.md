@@ -93,3 +93,25 @@ fix below RAISES a bar (permitted); nothing below relaxes anything above.
    non-English market (Riftbound: China), the map either covers that market's
    platforms or states plainly that its "top creator" claims are scoped to
    Western/English platforms only.
+
+## 6. Raised after review pass 2 (2026-07-14) — bars may only go UP
+
+1. **"Naming" is defined.** A §5.2 corroboration must be an independent *editorial or
+   community act of naming* the account as a notable creator for this game — an
+   article, a community thread, an official credit/partner roster, a wiki. Never:
+   machine-generated ecosystem records (deck databases, tournament decklist pages,
+   tracker leaderboards), never content authored by the account itself (bios, own
+   posts), never a mis-cited URL (a wrong citation is a ✘, and worse than none).
+2. **Verified-standing ≠ top-by-audience, and the map must show both.** A
+   "meets the standard" list may never be presented alone as "the top creators."
+   The map must surface the largest-audience accounts producing the game's content
+   (even as CANDIDATEs) alongside any verified list, so "top" reflects audience
+   reality, not just documentability.
+3. **At least one non-snippet or official-page source per ranked entry.** An account
+   whose entire entry rests on search-snippet paraphrases cannot appear in a
+   "meets the standard" list.
+4. **The publisher's official news/events index must be swept** (snippet-grade
+   retrieval acceptable) before any N-day window is declared complete.
+5. **Calendar scope must be declared** separately from creator scope. If the calendar
+   is global in practice, it is global in obligation — regional launches (e.g. Korea)
+   inside the window may not be missing.
